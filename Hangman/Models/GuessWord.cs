@@ -6,7 +6,7 @@ namespace Hangman.Models
   public class MysteryWord
   {
     private static List<MysteryWord> _words = new List<MysteryWord>{};
-    private static List<MysteryWord> _letters = new List<MysteryWord>{};
+    public List<Letter> Letters { get;set; }
     public int Id { get;set; }
     public string Word { get; set; }
     public MysteryWord(string word)
@@ -14,6 +14,7 @@ namespace Hangman.Models
       Word = word;
       _words.Add(this);
       Id = _words.Count;
+      Letters = new List<Letter>{};
     }
     public static void ClearAll()
     {
