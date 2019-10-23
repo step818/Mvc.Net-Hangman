@@ -15,6 +15,10 @@ namespace Hangman.Models
       _words.Add(this);
       Id = _words.Count;
     }
+    public static void ClearAll()
+    {
+      _words.Clear();
+    }
     public bool CheckLetter(char letter)
     {
       if(Word.Contains(letter))
