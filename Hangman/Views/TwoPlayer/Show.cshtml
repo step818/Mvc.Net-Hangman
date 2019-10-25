@@ -1,3 +1,4 @@
+@using Hangman.Models;
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,14 +8,16 @@
   </head>
   <body>
     <p>Now here is where the picture of the noose and spaces are!</p>
-    @if(@Model.result == "true")
-    {
-      <p>Fill each space with that guessed letter</p>
-    }
-    else
-    {
-      <p>Add an appendage to the noose and add letter to word bank on side</p>
-    }
+    <p>@Model.Word</p>
+    <p>@Model.Id</p>
+    <ul>
+      @foreach (Letter bet in @Model.Letters)
+      {
+        <li>
+          <p>bet</p>
+        </li>
+      }
+    </ul>
     <form action="/hangman/{wordId}/letter" method="post">
       <label for="letter">Type a letter here for your guess</label>
       <input id="letter" name="letter" type="text">

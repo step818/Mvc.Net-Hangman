@@ -16,17 +16,18 @@ namespace Hangman.Controllers
     public ActionResult Show(string word)
     {
       MysteryWord newWord = new MysteryWord(word);
-      return View();
+      return View(newWord);
     }
-    [HttpPost("/hangman/{wordId}/letter")]
-    public ActionResult Update(int wordId, string letter)
+    [HttpPost("/hangman/{letter}")]
+    public ActionResult Update(string letter)
     {
+      MysteryWord playerWord = MysteryWord.Find(1);
       Letter newLetter = new Letter(letter);
-      MysteryWord playerWord = MysteryWord.Find(wordId);
       bool resBool = playerWord.CheckLetter(newLetter);
       string result = resBool.ToString();
+      Console.WriteLine("hello");
       //This is where you input a letter to the GuessWord model
-      return RedirectToAction(result);
+      return RedirectToAction("Show");
     }
   }
 }
