@@ -20,9 +20,21 @@ namespace Hangman.Models
     {
       _words.Clear();
     }
-    public bool CheckLetter(char letter)
+    public static List<MysteryWord> GetAll()
     {
-      if(Word.Contains(letter))
+      return _words;
+    }
+    public static MysteryWord Find(int searchId)
+    {
+      return _words[searchId-1];
+    }
+    public void AddLetter(Letter letter)
+    {
+      Letters.Add(letter);
+    }
+    public bool CheckLetter(Letter letter)
+    {
+      if(Word.Contains(letter.Bet))
       {
         return true;
       }

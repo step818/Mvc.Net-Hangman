@@ -19,8 +19,10 @@ namespace Hangman.Controllers
       return View();
     }
     [HttpPost("/hangman/letter")]
-    public ActionResult Update()
+    public ActionResult Update(string letter)
     {
+      Letter newLetter = new Letter(letter);
+      
       //This is where you input a letter to the GuessWord model
       return RedirectToAction("Show");
     }
