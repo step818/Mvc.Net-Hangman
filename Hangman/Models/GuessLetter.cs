@@ -8,10 +8,12 @@ namespace Hangman.Models
     public static List<Letter> _letters = new List<Letter>{};
     // Bet is the current user guessed letter. short for alphaBet
     public string Bet { get; set; }
+    public int Id { get; set; }
     public Letter(string letter)
     {
       Bet = letter;
       _letters.Add(this);
+      Id = _letters.Count;
     }
     public static List<Letter> GetAll()
     {
