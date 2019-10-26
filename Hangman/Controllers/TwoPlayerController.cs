@@ -19,7 +19,7 @@ namespace Hangman.Controllers
       Letter newLetter = new Letter("");
       return View(newWord);
     }
-    [HttpPost("/hangman/letter")]
+    [HttpPost("/hangman/{letter}")]
     public ActionResult Update(string letter)
     {
       MysteryWord playerWord = MysteryWord.Find(1);

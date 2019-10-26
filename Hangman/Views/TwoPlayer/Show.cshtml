@@ -10,15 +10,23 @@
     <p>Now here is where the picture of the noose and spaces are!</p>
     <p>@Model.Word</p>
     <p>@Model.Id</p>
-    <ul>
-      @foreach (Letter bet in Model.Letters)
+    @if (@Model.Letters.Count == 0)
+    {
+      <p> </p>
+    }
+    else
+    {
+      <ul>
+      @foreach (Letter bet in Model)
       {
         <li>
           <p>Letter: @bet</p>
         </li>
       }
     </ul>
-    <form action="/hangman/letter" method="post">
+    }
+    
+    <form action="/hangman/{letter}" method="post">
       <label for="letter">Type a letter here for your guess</label>
       <input id="letter" name="letter" type="text">
       <button type="submit">Submit guess</button>
