@@ -34,7 +34,7 @@ namespace Hangman.Controllers
       Console.WriteLine(newLetter.Bet);
       Console.WriteLine(result);
       //This is where you input a letter to the GuessWord model
-      return RedirectToAction("Show");
+      return RedirectToAction("Show", allLetters);
     }
   }
 }
