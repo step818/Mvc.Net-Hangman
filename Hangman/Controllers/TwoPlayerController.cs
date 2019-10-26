@@ -19,8 +19,8 @@ namespace Hangman.Controllers
       Letter newLetter = new Letter("");
       return View(newWord);
     }
-    [HttpPost("/hangman/{letterId}")]
-    public ActionResult Update(string letter, int letterId)
+    [HttpPost("/hangman/letter")]
+    public ActionResult Update(string letter)
     {
       MysteryWord playerWord = MysteryWord.Find(1);
       // Add the letter to the letter list _letters

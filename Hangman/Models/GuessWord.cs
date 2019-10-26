@@ -32,6 +32,10 @@ namespace Hangman.Models
     {
       Letters.Add(letter);
     }
+    public Letter FindLetter(int searchId)
+    {
+      return Letters[searchId-1];
+    }
     public bool CheckLetter(Letter letter)
     {
       if(Word.Contains(letter.Bet))

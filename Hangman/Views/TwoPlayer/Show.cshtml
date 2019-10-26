@@ -11,10 +11,10 @@
     <p>@Model.Word</p>
     <p>@Model.Id</p>
     <ul>
-      @foreach (Letter bet in @Model.Letters)
+      @foreach (Letter bet in Model.Letters)
       {
         <li>
-          <p>bet</p>
+          <p>Letter: @bet</p>
         </li>
       }
     </ul>

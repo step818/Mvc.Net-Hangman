@@ -95,5 +95,14 @@ namespace Hangman.Tests
       // Assert
       Assert.AreEqual(true, result);
     }
+    [TestMethod]
+    public void FindLetter_ReturnsLetterFromList_Letter()
+    {
+      MysteryWord newWord = new MysteryWord("ice cream");
+      Letter newLetter = new Letter("c");
+      newWord.AddLetter(newLetter);
+      Letter result = newWord.FindLetter(1);
+      Assert.AreEqual(newLetter, result);
+    }
   }
 }
