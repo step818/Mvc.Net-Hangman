@@ -7,11 +7,13 @@ namespace Hangman.Controllers
 {
   public class TwoPlayerController : Controller
   {
+    // Brings up Index form to post to /hangman
     [HttpGet("/two")]
     public ActionResult Index()
     {
       return View();
     }
+    // Brings up Show which is main gane page
     [HttpPost("/hangman")]
     public ActionResult Show(string word)
     {
@@ -19,6 +21,7 @@ namespace Hangman.Controllers
       Letter newLetter = new Letter("");
       return View(newWord);
     }
+
     [HttpPost("/hangman/{letter}")]
     public ActionResult Update(string letter)
     {
