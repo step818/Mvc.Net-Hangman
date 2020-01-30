@@ -39,27 +39,28 @@ namespace Hangman.Tests
       List<MysteryWord> result = MysteryWord.GetAll();
       CollectionAssert.AreEqual(result, newList);
     }
-    [TestMethod]
-    public void AddList_ReturnLetterWithinWord_List()
-    {
-      // Set up an arranged list through Letter
-      string urLetter1 = "a";
-      string urLetter2 = "s";
-      Letter newLetter1 = new Letter(urLetter1);
-      Letter newLetter2 = new Letter(urLetter2);
-      // Arranged List with newLetter1.Bet="a", newLetter2.Bet="b"
-      List<Letter> urLetterGuesses = new List<Letter> {newLetter1, newLetter2};
-      // Create Word and add Letter instances to List through MysteryWord
-      string myWord = "poop";
-      MysteryWord newWord = new MysteryWord(myWord);
-      // Add instances of Letter Class to MysteryWord instance of newWord
-      newWord.AddLetter(newLetter1);
-      newWord.AddLetter(newLetter2);
-      // Result List with newWord.Word="poop" , newWord.Id= 1 , newWord.Letters = {newLetter1.Bet, newLetter2.Bet} = {"a", "b"} 
-      List<Letter> result = newWord.Letters;
-      // Assert
-      CollectionAssert.AreEqual(result, urLetterGuesses);
-    }
+    // [TestMethod]
+    // public void AddList_ReturnLetterWithinWord_List()
+    // {
+    //   // Create Word and add Letter instances to List through MysteryWord
+    //   string myWord = "poop";
+    //   MysteryWord newWord = new MysteryWord(myWord);
+    //   // Set up an arranged list through Letter
+    //   string urLetter1 = "a";
+    //   string urLetter2 = "s";
+    //   Letter newLetter1 = new Letter(urLetter1, newWord);
+    //   Letter newLetter2 = new Letter(urLetter2, newWord);
+    //   // Arranged List with newLetter1.Bet="a", newLetter2.Bet="b"
+    //   List<string> urLetterGuesses = new List<string> {newLetter1.Bet, newLetter2.Bet};
+    //   // Add instances of Letter Class to MysteryWord instance of newWord
+    //   newWord.AddLetter(newLetter1.Bet);
+    //   newWord.AddLetter(newLetter2.Bet);
+    //   // Result List with newWord.Word="poop" , newWord.Id= 1 , newWord.Letters = {newLetter1.Bet, newLetter2.Bet} = {"a", "b"} 
+    //   // Letters property no longer in MysteryWord
+    //   List<string> result = newWord.Letters;
+    //   // Assert
+    //   CollectionAssert.AreEqual(result, urLetterGuesses);
+    // }
     [TestMethod]
     public void Find_ReturnWordListThis_MysteryWord()
     {
@@ -78,7 +79,7 @@ namespace Hangman.Tests
     {
       // Arrange a mysteryword instance and a letter instance
       MysteryWord newWord = new MysteryWord("Dollar tree");
-      Letter newLetter = new Letter("z");
+      Letter newLetter = new Letter("z", newWord);
       // Get the actual result
       bool result = newWord.CheckLetter(newLetter);
       //Assert
@@ -88,21 +89,21 @@ namespace Hangman.Tests
     public void CheckLetter_ReturnTrue_Bool()
     {
       // Arrange a mysteryWord instance and a letter instance
-      MysteryWord newWord = new MysteryWord("Dollar tree");
-      Letter newLetter = new Letter("t");
+      MysteryWord newWord = new MysteryWord("Dollar Tree");
+      Letter newLetter = new Letter("R", newWord);
       // Get the result from the method
       bool result = newWord.CheckLetter(newLetter);
       // Assert
       Assert.AreEqual(true, result);
     }
-    [TestMethod]
-    public void FindLetter_ReturnsLetterFromList_Letter()
-    {
-      MysteryWord newWord = new MysteryWord("ice cream");
-      Letter newLetter = new Letter("c");
-      newWord.AddLetter(newLetter);
-      Letter result = newWord.FindLetter(1);
-      Assert.AreEqual(newLetter, result);
-    }
+    // [TestMethod]
+    // public void FindLetter_ReturnsLetterFromList_Letter()
+    // {
+    //   MysteryWord newWord = new MysteryWord("ice cream");
+    //   Letter newLetter = new Letter("c", newWord);
+    //   newWord.AddLetter(newLetter);
+    //   Letter result = newWord.FindLetter(1);
+    //   Assert.AreEqual(newLetter, result);
+    // }
   }
 }

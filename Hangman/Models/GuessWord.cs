@@ -6,15 +6,17 @@ namespace Hangman.Models
   public class MysteryWord
   {
     private static List<MysteryWord> _words = new List<MysteryWord>{};
-    public List<Letter> Letters { get;set; }
-    public int Id { get;set; }
+    //  The Letters list is being created when the word is being instanciated.
+    public List<string> Letters { get;set; }
+    public int Id { get; }
     public string Word { get; set; }
+    public char First { get; }
     public MysteryWord(string word)
     {
       Word = word;
       _words.Add(this);
       Id = _words.Count;
-      Letters = new List<Letter>{};
+      First = Word.ToCharArray()[0];
     }
     public static void ClearAll()
     {
@@ -28,17 +30,18 @@ namespace Hangman.Models
     {
       return _words[searchId-1];
     }
-    public void AddLetter(Letter letter)
+    // Might not need AddLetter
+    public void AddLetter(string letter)
     {
       Letters.Add(letter);
     }
-    public Letter FindLetter(int searchId)
+    public string FindLetter(int searchId)
     {
       return Letters[searchId-1];
     }
     public bool CheckLetter(Letter letter)
     {
-      if(Word.Contains(letter.Bet))
+      if(Word.ToLower().Contains(letter.Bet) || Word.ToUpper().Contains(letter.Bet))
       {
         return true;
       }
