@@ -8,11 +8,19 @@
   </head>
   <body>
     <p>Now here is where the picture of the noose and spaces are!</p>
-    <p>@Model.Word</p>
-    <p>@Model.Id</p>
-    <p>Welcome to virtual canvas @Model.First</p>
     
-    <form action="/hangman/{letter}" method="post">
+    <p>@Model.Id</p>
+    <p>@Model.Word</p>
+    <p>@Model.Score</p>
+    <p>@Model.Guess.Bet</p>
+    @foreach(string i in Model._gLetters)
+    {
+      <p>@i</p>
+    }
+  
+    <p>Welcome to virtual canvas</p>
+    
+    <form action="/hangman/list" method="post">
       <label for="letter">Type a letter here for your guess</label>
       <input id="letter" name="letter" type="text">
       <button type="submit">Submit guess</button>

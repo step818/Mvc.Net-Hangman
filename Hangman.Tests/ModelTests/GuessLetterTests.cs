@@ -36,7 +36,6 @@ namespace Hangman.Tests
       Letter newLetter1 = new Letter("a", newWord);
       Letter newLetter2 = new Letter("b", newWord);
       List<string> myLetters = new List<string> {newLetter1.Bet, newLetter2.Bet};
-
       List<string> result = Letter.GetAll();
       // Assert
       CollectionAssert.AreEqual(myLetters, result);

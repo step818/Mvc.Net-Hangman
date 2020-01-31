@@ -5,19 +5,29 @@ namespace Hangman.Models
 {
   public class MysteryWord
   {
-    private static List<MysteryWord> _words = new List<MysteryWord>{};
+    public Letter Guess { get; set; }
     //  The Letters list is being created when the word is being instanciated.
-    public List<string> Letters { get;set; }
+    public List<string> _gLetters = new List<string>{};
+    private static List<MysteryWord> _words = new List<MysteryWord>{};
     public int Id { get; }
     public string Word { get; set; }
-    public char First { get; }
-    public MysteryWord(string word)
+    public int Score { get; set; }
+    public MysteryWord(string word, Letter abc)
     {
+      this.Guess = abc;
+      _gLetters.Add(abc.Bet);
+      Score = 0;
       Word = word;
       _words.Add(this);
       Id = _words.Count;
-      First = Word.ToCharArray()[0];
+      // First = Word.ToCharArray()[0];
     }
+    // public MysteryWord(string word, Letter abc)
+    // {
+    //   this.ABC = abc;
+    //   Word = word;
+    //   Id = _words.Count;
+    // }
     public static void ClearAll()
     {
       _words.Clear();
@@ -26,6 +36,10 @@ namespace Hangman.Models
     {
       return _words;
     }
+    public  List<string> GetAllLetters()
+    {
+      return _gLetters;
+    }
     public static MysteryWord Find(int searchId)
     {
       return _words[searchId-1];
@@ -33,15 +47,15 @@ namespace Hangman.Models
     // Might not need AddLetter
     public void AddLetter(string letter)
     {
-      Letters.Add(letter);
+      _gLetters.Add(letter);
     }
     public string FindLetter(int searchId)
     {
-      return Letters[searchId-1];
+      return _gLetters[searchId-1];
     }
-    public bool CheckLetter(Letter letter)
+    public bool CheckLetter()
     {
-      if(Word.ToLower().Contains(letter.Bet) || Word.ToUpper().Contains(letter.Bet))
+      if(Word.ToLower().Contains(Guess.Bet) || Word.ToUpper().Contains(Guess.Bet))
       {
         return true;
       }

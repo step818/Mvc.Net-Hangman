@@ -11,13 +11,12 @@ namespace Hangman.Models
     // Bet is the current user guessed letter. short for alphaBet
     public string Bet { get; set; }
     public int Id { get; set; }
-    public Letter(string letter, MysteryWord word)
+    public Letter(string letter)
     {
       // Now I can check letter within word here because I have the word!
-      this.userWord = word.Word;
-      this.Bet = letter;
+      Bet = letter;
       _letters.Add(this.Bet);
-      Id = _letters.Count;
+      Id = _letters.Count-1;
     }
     public static List<string> GetAll()
     {
