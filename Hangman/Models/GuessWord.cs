@@ -7,7 +7,7 @@ namespace Hangman.Models
   {
     public Letter Guess { get; set; }
     //  The Letters list is being created when the word is being instanciated.
-    public List<string> _gLetters = new List<string>{};
+    public static List<string> _gLetters = new List<string>{};
     private static List<MysteryWord> _words = new List<MysteryWord>{};
     public int Id { get; }
     public string Word { get; set; }
@@ -20,14 +20,7 @@ namespace Hangman.Models
       Word = word;
       _words.Add(this);
       Id = _words.Count;
-      // First = Word.ToCharArray()[0];
     }
-    // public MysteryWord(string word, Letter abc)
-    // {
-    //   this.ABC = abc;
-    //   Word = word;
-    //   Id = _words.Count;
-    // }
     public static void ClearAll()
     {
       _words.Clear();
@@ -36,7 +29,7 @@ namespace Hangman.Models
     {
       return _words;
     }
-    public  List<string> GetAllLetters()
+    public static List<string> GetAllLetters()
     {
       return _gLetters;
     }
