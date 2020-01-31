@@ -29,7 +29,7 @@ namespace Hangman.Models
     {
       return _words;
     }
-    public static List<string> GetAllLetters()
+    public List<string> GetAllLetters()
     {
       return _gLetters;
     }
