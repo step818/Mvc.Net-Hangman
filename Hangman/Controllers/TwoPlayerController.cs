@@ -26,17 +26,20 @@ namespace Hangman.Controllers
     {
       // Use the word that was just created
       MysteryWord playerWord = MysteryWord.Find(1);
-      // Create first and on letters towards list
-      Letter newLetter = new Letter(letter);
-
-      Player game = new Player(newLetter, playerWord);
-      // Add the letter to the letter list and Guess in Mystword
-      // MysteryWord updatedCheck = new MysteryWord(playerWord.Word, newLetter);
-      // bool resBool = newLetter.CheckLetter();
-      // string isMatch = resBool.ToString();
-      // List<string> allLetters = Letter.GetAll();
-  
-      // Console.WriteLine(newLetter.Bet);
+      bool duplicate = playerWord.AlreadyGuessed(letter);
+      if(duplicate){
+        Console.WriteLine("Already guessed this letter. Try a different letter.");
+      } else {
+        // Add letter to the letters list
+        playerWord.AddLetter(letter);
+        bool isMatch = playerWord.CheckLetter();
+        if(isMatch)
+        {
+          // For all blanks that are that letter, fill them in
+        } else {
+          playerWord.Score++;
+        }
+      }
       // Console.WriteLine(newLetter.Id);
       // Console.WriteLine(isMatch);
       // foreach(string i in allLetters)
@@ -45,7 +48,7 @@ namespace Hangman.Controllers
       // }
       
       //This is where you input a letter to the Guessword model
-      return View(game);
+      return View(playerWord);
     }
   }
 }

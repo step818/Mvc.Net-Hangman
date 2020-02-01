@@ -14,7 +14,6 @@
     <p>Word Id: @Model.Id</p>
     <p>Word: @Model.Word</p>
     <p>Score: @Model.Score</p>
-    <p>Current guess: @Model.Guess.Bet</p>
     @if(Model.CheckLetter()) {
       <p>it matched</p>
     }
@@ -22,7 +21,7 @@
       <p>it doesnt match</p>
     }
     <p> for each </p>
-    @foreach(string i in Model.GetAllLetters())
+    @foreach(string i in Model.LettersBank())
     {
       <p>@i</p>
     }

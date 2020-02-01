@@ -16,22 +16,22 @@ namespace Hangman.Models
       _letters.Add(letter);
     }
 
-    // public bool CheckLetter()
-    // {
-    //   if(CurrentWord.Word.ToLower().Contains(Bet) || CurrentWord.Word.ToUpper().Contains(Bet))
-    //   {
-    //     return true;
-    //   }
-    //   else
-    //   {
-    //     IncPoint();
-    //     return false;
-    //   }
-    // } 
+    public bool CheckLetter()
+    {
+      // if(CurrentWord.Word.ToLower().Contains(Bet) || CurrentWord.Word.ToUpper().Contains(Bet))
+      // {
+      //   return true;
+      // }
+      // else
+      {
+        IncPoint();
+        return false;
+      }
+    } 
 
-    // public int IncPoint()
-    // {
-    //   return CurrentWord.Score++;
-    // }
+    public int IncPoint()
+    {
+      return 1;
+    }
   }
 }
