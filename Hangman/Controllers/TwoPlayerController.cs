@@ -17,34 +17,35 @@ namespace Hangman.Controllers
     [HttpPost("/hangman")]
     public ActionResult Show(string word)
     {
-      Letter newLetter = new Letter("p");
-      MysteryWord newWord = new MysteryWord(word, newLetter);
+      MysteryWord newWord = new MysteryWord(word);
       return View(newWord);
     }
 
     [HttpPost("/hangman/{letter}")]
     public ActionResult Update(string letter)
     {
-      //  I think this is a bug. No word to pass into .Find()
+      // Use the word that was just created
       MysteryWord playerWord = MysteryWord.Find(1);
-      // Add the letter to the letter list _letters
+      // Create first and on letters towards list
       Letter newLetter = new Letter(letter);
+
+      Player game = new Player(newLetter, playerWord);
       // Add the letter to the letter list and Guess in Mystword
-      MysteryWord updatedCheck = new MysteryWord(playerWord.Word, newLetter);
-      bool resBool = updatedCheck.CheckLetter();
-      string isMatch = resBool.ToString();
-      List<string> allLetters = Letter.GetAll();
-      Console.WriteLine(playerWord.Word);
-      Console.WriteLine(newLetter.Bet);
-      Console.WriteLine(newLetter.Id);
-      Console.WriteLine(isMatch);
-      foreach(string i in allLetters)
-      {
-        Console.WriteLine(i);
-      }
+      // MysteryWord updatedCheck = new MysteryWord(playerWord.Word, newLetter);
+      // bool resBool = newLetter.CheckLetter();
+      // string isMatch = resBool.ToString();
+      // List<string> allLetters = Letter.GetAll();
+  
+      // Console.WriteLine(newLetter.Bet);
+      // Console.WriteLine(newLetter.Id);
+      // Console.WriteLine(isMatch);
+      // foreach(string i in allLetters)
+      // {
+      //   Console.WriteLine(i);
+      // }
       
       //This is where you input a letter to the Guessword model
-      return View(updatedCheck);
+      return View(game);
     }
   }
 }

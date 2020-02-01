@@ -8,11 +8,13 @@
   </head>
   <body>
     <p>Now here is where the picture of the noose and spaces are!</p>
-    
-    <p>@Model.Id</p>
-    <p>@Model.Word</p>
-    <p>@Model.Score</p>
-    <p>@Model.Guess.Bet</p>
+    @for(int i = 0; i < Model.Word.Length; i++){
+      <p>_</p>
+    }
+    <p>Word Id: @Model.Id</p>
+    <p>Word: @Model.Word</p>
+    <p>Score : @Model.Score</p>
+    <p>Current guess: @Model.Guess.Bet</p>
     @if(Model.CheckLetter()) {
       <p>it matched</p>
     }
