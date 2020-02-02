@@ -8,12 +8,31 @@
   </head>
   <body>
     <p>Now here is where the picture of the noose and spaces are!</p>
-    @for(int i = 0; i < Model.Word.Length; i++){
-      <p>_</p>
+    @foreach(char i in Model.FillInBlanks())
+    {
+      <p>@i</p>
     }
-    <p>Word Id: @Model.Id</p>
-    <p>Word: @Model.Word</p>
-    <p>Score : @Model.Score</p>
+
+    @if(Model.Score == 1) 
+    {
+      <p>Head</p>
+    } else if(Model.Score == 2)
+    {
+      <p>Head plus Torso</p>
+    } else if(Model.Score == 3)
+    {
+      <p>Head plus Torso plus Left Arm</p>
+    } else if(Model.Score == 4)
+    {
+      <p>Head plus Torso plus Left Arm plus Right Arm</p>
+    } else if(Model.Score == 5)
+    {
+      <p>Head + Torso + Left Arm + Right Arm + Left Leg</p>
+    } else if(Model.Score == 6)
+    {
+      <p>Head + Torso + Left Arm + Right Arm + Left Leg + Right Leg</p>
+    }
+
     @if(Model.CheckLetter()) {
       <p>it matched</p>
     }
@@ -25,13 +44,16 @@
     {
       <p>@i</p>
     }
-  
-    <p>Welcome to virtual canvas</p>
     
-    <form action="/hangman/{letter}" method="post">
-      <label for="letter">Type a letter here for your guess</label>
-      <input id="letter" name="letter" type="text">
-      <button type="submit">Submit guess</button>
-    </form>
+    @if(Model.Score < 6)
+    {
+      <form action="/hangman/{letter}" method="post">
+        <label for="letter">Type a letter here for your guess</label>
+        <input id="letter" name="letter" type="text">
+        <button type="submit">Submit guess</button>
+      </form>
+    } else {
+      <p>You Lose!!!!</p>
+    }
   </body>
 </html>

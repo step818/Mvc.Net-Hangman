@@ -8,6 +8,7 @@ namespace Hangman.Models
     public string Word { get; set; }
     public int Score { get; set; }
     public int Id { get; set; }
+    public static char[] charArr { get; set; }
     public static List<string> _letters = new List<string>{};
     public static List<MysteryWord> _words = new List<MysteryWord>{};
     public MysteryWord(string word)
@@ -16,6 +17,7 @@ namespace Hangman.Models
       Id = _words.Count;
       Word = word;
       _words.Add(this);
+      charArr = new char[Word.Length];
     }
     // public static void ClearAll()
     // {
@@ -29,6 +31,14 @@ namespace Hangman.Models
     // {
     //   return _gLetters;
     // }
+    public bool isGameOver()
+    {
+      if(Score==6) {
+        return true;
+      } else {
+        return false;
+      }
+    }
     public static MysteryWord Find(int searchId)
     {
       return _words[searchId-1];
@@ -60,6 +70,7 @@ namespace Hangman.Models
       } else {
         if(Word.ToLower().Contains(_letters[_letters.Count-1]) || Word.ToUpper().Contains(_letters[_letters.Count-1]))
         {
+          FillInBlanks();
           return true;
         }
         else
@@ -69,5 +80,30 @@ namespace Hangman.Models
         }
       }
     }
+    public char[] FillInBlanks()
+    {
+      char[] wrdArr = Word.ToCharArray();
+      if(_letters.Count == 0)
+      {
+        for(int i = 0; i < charArr.Length; i++)
+        {
+          charArr[i] = '*';
+        }
+        return charArr;
+      } else {
+        for(int i = 0; i < charArr.Length; i++)
+        {
+          if(wrdArr[i] == Char.Parse(_letters[_letters.Count-1]) && (charArr[i] == '*'))
+          {
+            charArr[i] = Char.Parse(_letters[_letters.Count-1]);
+          } else {
+            charArr[i] = '*';
+          } 
+        }
+        return charArr;
+      }
+    }
+
+
   }
 }

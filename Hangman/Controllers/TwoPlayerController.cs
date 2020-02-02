@@ -32,12 +32,19 @@ namespace Hangman.Controllers
       } else {
         // Add letter to the letters list
         playerWord.AddLetter(letter);
+        playerWord.FillInBlanks();
         bool isMatch = playerWord.CheckLetter();
         if(isMatch)
         {
           // For all blanks that are that letter, fill them in
         } else {
           playerWord.Score++;
+        }
+        bool lose = playerWord.isGameOver();
+        if(lose)
+        {
+          Console.WriteLine("You lose");
+
         }
       }
       // Console.WriteLine(newLetter.Id);
