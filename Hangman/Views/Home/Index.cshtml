@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      Hangman
-    </title>
-  </head>
-  <body>
-    <form action="/one" method="get">
-      <button type="submit">Against Computer</button>
-    </form>
-    <form action="/two" method="get">
-      <button type="submit">Against Each Other</button>
-    </form>
-  </body>
-</html>
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <div class="jumbotron">Hangman</div>
+</div>
+<form action="/one" method="get">
+  <button type="submit" class="btn btn-primary">Against Computer</button>
+</form>
+<form action="/two" method="get">
+  <button type="submit" class="btn btn-danger">Against Each Other</button>
+</form>

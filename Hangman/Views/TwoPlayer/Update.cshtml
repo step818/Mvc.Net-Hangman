@@ -10,7 +10,13 @@
     <p>Now here is where the picture of the noose and spaces are!</p>
     @foreach(char i in Model.FillInBlanks())
     {
-      <p>@i</p>
+      @if(i == ' ')
+      {
+        <p><p>__</p></p>
+      } else{
+        <p>@i</p>
+      }
+      
     }
 
     @if(Model.Score == 1) 
@@ -31,6 +37,12 @@
     } else if(Model.Score == 6)
     {
       <p>Head + Torso + Left Arm + Right Arm + Left Leg + Right Leg</p>
+    }
+
+    @if(Model.Win())
+    {
+      <p>You Win!</p>
+      <p>Button to play again</p>
     }
 
     @if(Model.CheckLetter()) {
@@ -54,6 +66,7 @@
       </form>
     } else {
       <p>You Lose!!!!</p>
+      <p>Button to play again</p>
     }
   </body>
 </html>

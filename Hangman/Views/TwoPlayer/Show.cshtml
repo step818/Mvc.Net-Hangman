@@ -7,10 +7,15 @@
     </title>
   </head>
   <body>
-    <p>Now here is where the picture of the noose and spaces are!</p>
-    @for(int i = 0; i < Model.Word.Length; i++){
-      <p>_</p>
-    }
+    @foreach(char i in Model.FillInBlanks())
+      {
+        @if(i == ' ')
+      {
+        <p><p>__</p></p>
+      } else{
+        <p>@i</p>
+      }
+      }
     
     @if(Model.Score == 1) 
     {
@@ -32,13 +37,19 @@
     else{
       <p>it doesnt match</p>
     }
-    <p> for each </p>
+    <h2>Letter Bank:</h2>
     @foreach(string i in Model.LettersBank())
     {
       <p>@i</p>
     }
+
+    @if(Model.Win())
+    {
+      <p>You Win!</p>
+      <p>Button to play again</p>
+    }
     
-    @if(Model.Score < 6)
+    @if(Model.Score < 6 && !Model.Win())
     {
       <form action="/hangman/{letter}" method="post">
         <label for="letter">Type a letter here for your guess</label>
@@ -47,6 +58,7 @@
       </form>
     } else {
       <p>You Lose!!!!</p>
+      <p>Button to play again</p>
     }
   </body>
 </html>

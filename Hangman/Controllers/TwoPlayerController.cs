@@ -32,10 +32,22 @@ namespace Hangman.Controllers
       } else {
         // Add letter to the letters list
         playerWord.AddLetter(letter);
-        playerWord.FillInBlanks();
+        char[] blanks = playerWord.FillInBlanks();
+        List<string> allLetters = playerWord.LettersBank();
+        foreach(char i in blanks)
+        {
+          Console.WriteLine("FillInBlanks: " + i);
+        }
+        Console.WriteLine(playerWord.FillInBlanks().Length);
+        foreach(string i in allLetters)
+        {
+          Console.WriteLine("LettersBank: " + i);
+        }
+        
         bool isMatch = playerWord.CheckLetter();
         if(isMatch)
         {
+          bool win = playerWord.Win();
           // For all blanks that are that letter, fill them in
         } else {
           playerWord.Score++;

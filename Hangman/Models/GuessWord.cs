@@ -30,7 +30,19 @@ namespace Hangman.Models
     // public List<string> GetAllLetters()
     // {
     //   return _gLetters;
-    // }
+    public bool Win()
+    {
+      char[] temp = FillInBlanks(); // ['*','*','*',...]
+
+      for(int i = 0; i < temp.Length; i++)
+      {
+        if(temp[i] == '*')
+        {
+          return false;
+        } 
+      }
+      return true;
+    }
     public bool isGameOver()
     {
       if(Score==6) {
@@ -47,7 +59,8 @@ namespace Hangman.Models
     {
       _letters.Add(letter.ToLower());
     }
-    public List<string> LettersBank(){
+    public List<string> LettersBank()
+    {
       return _letters;
     }
     // public string FindLetter(int searchId)
@@ -70,7 +83,6 @@ namespace Hangman.Models
       } else {
         if(Word.ToLower().Contains(_letters[_letters.Count-1]) || Word.ToUpper().Contains(_letters[_letters.Count-1]))
         {
-          FillInBlanks();
           return true;
         }
         else
@@ -82,26 +94,23 @@ namespace Hangman.Models
     }
     public char[] FillInBlanks()
     {
-      char[] wrdArr = Word.ToCharArray();
-      if(_letters.Count == 0)
+      char[] filledIn = Word.ToCharArray();
+      char[] blanks = new char[filledIn.Length];
+      for(int i =0; i< blanks.Length; i++)
       {
-        for(int i = 0; i < charArr.Length; i++)
+        if(LettersBank().Contains(filledIn[i].ToString().ToLower()))
         {
-          charArr[i] = '*';
-        }
-        return charArr;
-      } else {
-        for(int i = 0; i < charArr.Length; i++)
-        {
-          if(wrdArr[i] == Char.Parse(_letters[_letters.Count-1]) && (charArr[i] == '*'))
+          blanks[i] = filledIn[i];
+        } else {
+          if(filledIn[i] == ' ')
           {
-            charArr[i] = Char.Parse(_letters[_letters.Count-1]);
+            blanks[i] = ' ';
           } else {
-            charArr[i] = '*';
-          } 
+            blanks[i] = '*';
+          }
         }
-        return charArr;
       }
+      return blanks;
     }
 
 
