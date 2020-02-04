@@ -1,64 +1,68 @@
 @using Hangman.Models;
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      TwoPlayer
-    </title>
-  </head>
-  <body>
-    @foreach(char i in Model.FillInBlanks())
+@{
+  Layout = "_Layout";
+}
+
+    <div class="container">
+      <div>
+        <img src="img/download.png" alt="noose picture">
+      </div>
+      <div class="spaces">
+        <div class="row">
+          @foreach(char i in Model.FillInBlanks())
+            {
+              @if(i == ' ')
+              {
+                <span>___</span>
+              } else{
+                <p>@i</p>
+              }
+            }
+        </div>
+      </div>
+      @if(Model.Score == 1) 
       {
-        @if(i == ' ')
+        <p>Head</p>
+      } else if(Model.Score == 2)
       {
-        <p><p>__</p></p>
-      } else{
+        <p>Head plus Torso</p>
+      } else if(Model.Score == 3)
+      {
+        <p>Head plus Torso plus Left Arm</p>
+      } else if(Model.Score == 4)
+      {
+        <p>Head plus Torso plus Left Arm plus Right Arm</p>
+      }
+
+      @if(Model.CheckLetter()) {
+        <p>it matched</p>
+      }
+      else{
+        <p>it doesnt match</p>
+      }
+      <h2>Letter Bank:</h2>
+      @foreach(string i in Model.LettersBank())
+      {
         <p>@i</p>
       }
+
+      @if(Model.Win())
+      {
+        <p>You Win!</p>
+        <form action="/" method="get">
+          <button type="submit" class="btn btn-primary">Play again</button>
+        </form>
       }
-    
-    @if(Model.Score == 1) 
-    {
-      <p>Head</p>
-    } else if(Model.Score == 2)
-    {
-      <p>Head plus Torso</p>
-    } else if(Model.Score == 3)
-    {
-      <p>Head plus Torso plus Left Arm</p>
-    } else if(Model.Score == 4)
-    {
-      <p>Head plus Torso plus Left Arm plus Right Arm</p>
-    }
-
-    @if(Model.CheckLetter()) {
-      <p>it matched</p>
-    }
-    else{
-      <p>it doesnt match</p>
-    }
-    <h2>Letter Bank:</h2>
-    @foreach(string i in Model.LettersBank())
-    {
-      <p>@i</p>
-    }
-
-    @if(Model.Win())
-    {
-      <p>You Win!</p>
-      <p>Button to play again</p>
-    }
-    
-    @if(Model.Score < 6 && !Model.Win())
-    {
-      <form action="/hangman/{letter}" method="post">
-        <label for="letter">Type a letter here for your guess</label>
-        <input id="letter" name="letter" type="text">
-        <button type="submit">Submit guess</button>
-      </form>
-    } else {
-      <p>You Lose!!!!</p>
-      <p>Button to play again</p>
-    }
-  </body>
-</html>
+      
+      @if(Model.Score < 6 && !Model.Win())
+      {
+        <form action="/hangman/{letter}" method="post">
+          <label for="letter">Type a letter here for your guess</label>
+          <input id="letter" name="letter" type="text">
+          <button type="submit">Submit guess</button>
+        </form>
+      } else {
+        <p>You Lose!!!!</p>
+        <p>Button to play again</p>
+      }
+    </div>

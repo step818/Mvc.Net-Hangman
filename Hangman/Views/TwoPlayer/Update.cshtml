@@ -1,72 +1,77 @@
 @using Hangman.Models;
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      TwoPlayer
-    </title>
-  </head>
-  <body>
-    <p>Now here is where the picture of the noose and spaces are!</p>
-    @foreach(char i in Model.FillInBlanks())
-    {
-      @if(i == ' ')
+@{
+  Layout = "_Layout";
+}
+
+    <div class="container">
+      <div>
+        <img src="~/img/download.png" alt="noose picture">
+      </div>
+      <div class="spaces">
+        <div class="row">
+          @foreach(char i in Model.FillInBlanks())
+          {
+            @if(i == ' ')
+            {
+              <span>__</span>
+            } else{
+              <p>@i</p>
+            }
+            
+          }
+        </div>
+      </div>
+      @if(Model.Score == 1) 
       {
-        <p><p>__</p></p>
-      } else{
+        <p>Head</p>
+      } else if(Model.Score == 2)
+      {
+        <p>Head plus Torso</p>
+      } else if(Model.Score == 3)
+      {
+        <p>Head plus Torso plus Left Arm</p>
+      } else if(Model.Score == 4)
+      {
+        <p>Head plus Torso plus Left Arm plus Right Arm</p>
+      } else if(Model.Score == 5)
+      {
+        <p>Head + Torso + Left Arm + Right Arm + Left Leg</p>
+      } else if(Model.Score == 6)
+      {
+        <p>Head + Torso + Left Arm + Right Arm + Left Leg + Right Leg</p>
+      }
+
+      @if(Model.Win())
+      {
+        <p>You Win!</p>
+        <form action="/" method="get">
+          <button type="submit" class="btn btn-primary">Play again</button>
+        </form>
+      }
+
+      @if(Model.CheckLetter()) {
+        <p>it matched</p>
+      }
+      else{
+        <p>it doesnt match</p>
+      }
+      <p> for each </p>
+      @foreach(string i in Model.LettersBank())
+      {
         <p>@i</p>
       }
       
-    }
-
-    @if(Model.Score == 1) 
-    {
-      <p>Head</p>
-    } else if(Model.Score == 2)
-    {
-      <p>Head plus Torso</p>
-    } else if(Model.Score == 3)
-    {
-      <p>Head plus Torso plus Left Arm</p>
-    } else if(Model.Score == 4)
-    {
-      <p>Head plus Torso plus Left Arm plus Right Arm</p>
-    } else if(Model.Score == 5)
-    {
-      <p>Head + Torso + Left Arm + Right Arm + Left Leg</p>
-    } else if(Model.Score == 6)
-    {
-      <p>Head + Torso + Left Arm + Right Arm + Left Leg + Right Leg</p>
-    }
-
-    @if(Model.Win())
-    {
-      <p>You Win!</p>
-      <p>Button to play again</p>
-    }
-
-    @if(Model.CheckLetter()) {
-      <p>it matched</p>
-    }
-    else{
-      <p>it doesnt match</p>
-    }
-    <p> for each </p>
-    @foreach(string i in Model.LettersBank())
-    {
-      <p>@i</p>
-    }
-    
-    @if(Model.Score < 6)
-    {
-      <form action="/hangman/{letter}" method="post">
-        <label for="letter">Type a letter here for your guess</label>
-        <input id="letter" name="letter" type="text">
-        <button type="submit">Submit guess</button>
-      </form>
-    } else {
-      <p>You Lose!!!!</p>
-      <p>Button to play again</p>
-    }
-  </body>
-</html>
+      @if(Model.Score < 6)
+      {
+        <form action="/hangman/{letter}" method="post">
+          <label for="letter">Type a letter here for your guess</label>
+          <input id="letter" name="letter" type="text">
+          <button type="submit">Submit guess</button>
+        </form>
+      } else {
+        <p>You Lose!!!!</p>
+        <form action="/" method="get">
+          <button type="submit" class="btn btn-primary">Play again</button>
+        </form>
+      }
+    </div>
