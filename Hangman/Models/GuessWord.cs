@@ -19,14 +19,18 @@ namespace Hangman.Models
       _words.Add(this);
       charArr = new char[Word.Length];
     }
-    // public static void ClearAll()
-    // {
-    //   _words.Clear();
-    // }
-    // public static List<MysteryWord> GetAll()
-    // {
-    //   return _words;
-    // }
+    public static void ClearAllWords()
+    {
+      _words.Clear();
+    }
+    public static void ClearAllLetters()
+    {
+      _letters.Clear();
+    }
+    public static List<MysteryWord> GetAll()
+    {
+      return _words;
+    }
     // public List<string> GetAllLetters()
     // {
     //   return _gLetters;
@@ -87,7 +91,6 @@ namespace Hangman.Models
         }
         else
         {
-          // IncPoint(false);
           return false;
         }
       }
@@ -106,13 +109,11 @@ namespace Hangman.Models
           {
             blanks[i] = ' ';
           } else {
-            blanks[i] = '*';
+            blanks[i] = '_';
           }
         }
       }
       return blanks;
     }
-
-
   }
 }

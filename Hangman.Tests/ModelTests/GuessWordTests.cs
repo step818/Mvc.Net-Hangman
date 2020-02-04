@@ -10,7 +10,7 @@ namespace Hangman.Tests
   {
     public void Dispose()
     {
-      MysteryWord.ClearAll();
+      MysteryWord.ClearAllWords();
     }
     [TestMethod]
     public void MysteryWord_MakeObject_Obj()
@@ -26,7 +26,7 @@ namespace Hangman.Tests
       string myWord = "VsCode";
       MysteryWord newWord = new MysteryWord(myWord);
       int result = newWord.Id;
-      Assert.AreEqual(result, 1);
+      Assert.AreEqual(result, 0);
     }
     [TestMethod]
     public void GetAll_ReturnsList_List()
@@ -79,9 +79,9 @@ namespace Hangman.Tests
     {
       // Arrange a mysteryword instance and a letter instance
       MysteryWord newWord = new MysteryWord("Dollar tree");
-      Letter newLetter = new Letter("z", newWord);
+      Letter newLetter = new Letter("z");
       // Get the actual result
-      bool result = newWord.CheckLetter(newLetter);
+      bool result = newWord.CheckLetter();
       //Assert
       Assert.AreEqual(false, result);
     }
@@ -90,20 +90,19 @@ namespace Hangman.Tests
     {
       // Arrange a mysteryWord instance and a letter instance
       MysteryWord newWord = new MysteryWord("Dollar Tree");
-      Letter newLetter = new Letter("R", newWord);
+      newWord.AddLetter("R");
       // Get the result from the method
-      bool result = newWord.CheckLetter(newLetter);
+      bool result = newWord.CheckLetter();
       // Assert
       Assert.AreEqual(true, result);
     }
-    // [TestMethod]
-    // public void FindLetter_ReturnsLetterFromList_Letter()
-    // {
-    //   MysteryWord newWord = new MysteryWord("ice cream");
-    //   Letter newLetter = new Letter("c", newWord);
-    //   newWord.AddLetter(newLetter);
-    //   Letter result = newWord.FindLetter(1);
-    //   Assert.AreEqual(newLetter, result);
-    // }
+    [TestMethod]
+    public void FillInBlanks_ReturnsInitial_CharArray()
+    {
+      MysteryWord newWord = new MysteryWord("This is");
+      char[] result = newWord.FillInBlanks();
+      char[] test = {'_','_','_','_',' ','_','_'};
+      Assert.AreEqual(test[4], result[4]);
+    }
   }
 }
