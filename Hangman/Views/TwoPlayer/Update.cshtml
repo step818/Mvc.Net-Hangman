@@ -4,41 +4,60 @@
 }
 
     <div class="container">
-      <div>
-        <img src="img/download.png" alt="noose picture">
-      </div>
       <div class="spaces">
         <div class="row">
           @foreach(char i in Model.FillInBlanks())
-          {
-            @if(i == ' ')
             {
-              <pre>  </pre>
-            } else{
-              <pre>__ </pre>
+              @if(i == ' ')
+              {
+                <pre>  </pre>
+              } else{
+                <pre>@i </pre>
+              }
             }
-            
-          }
         </div>
       </div>
-      @if(Model.Score == 1) 
+      <div class="noosePicture">
+        @if(Model.Score == 0) {
+          <div>
+            <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
+          </div>
+        } else if (Model.Score == 1) {
+          <div>
+            <img src="~/img/Hangman1.png" width="200" height="390" alt="1 wrong, noose picture">
+          </div>
+        } else if(Model.Score == 2)
+        {
+          <div>
+            <img src="~/img/Hangman2.png" width="200" height="390" alt="1 wrong, noose picture">
+          </div>
+        } else if(Model.Score == 3)
+        {
+          <div>
+            <img src="~/img/Hangman3.png" width="200" height="390" alt="1 wrong, noose picture">
+          </div>
+        } else if(Model.Score == 4)
+        {
+          <div>
+            <img src="~/img/Hangman4.png" width="200" height="390" alt="1 wrong, noose picture">
+          </div>
+        } else if(Model.Score == 5)
+        {
+          <div>
+            <img src="~/img/Hangman5.png" width="200" height="390" alt="1 wrong, noose picture">
+          </div>
+        } else if(Model.Score == 6)
+        {
+          <div>
+            <img src="~/img/Hangman6.png" width="200" height="390" alt="1 wrong, noose picture">
+          </div>
+        }
+      </div>
+
+      <h2>Letter Bank:</h2>
+      @foreach(string i in Model.LettersBank())
       {
-        <p>Head</p>
-      } else if(Model.Score == 2)
-      {
-        <p>Head plus Torso</p>
-      } else if(Model.Score == 3)
-      {
-        <p>Head plus Torso plus Left Arm</p>
-      } else if(Model.Score == 4)
-      {
-        <p>Head plus Torso plus Left Arm plus Right Arm</p>
-      } else if(Model.Score == 5)
-      {
-        <p>Head + Torso + Left Arm + Right Arm + Left Leg</p>
-      } else if(Model.Score == 6)
-      {
-        <p>Head + Torso + Left Arm + Right Arm + Left Leg + Right Leg</p>
+        <p>@i</p>
       }
 
       @if(Model.Win())
@@ -48,20 +67,8 @@
           <button type="submit" class="btn btn-primary">Play again</button>
         </form>
       }
-
-      @if(Model.CheckLetter()) {
-        <p>it matched</p>
-      }
-      else{
-        <p>it doesnt match</p>
-      }
-      <p> for each </p>
-      @foreach(string i in Model.LettersBank())
-      {
-        <p>@i</p>
-      }
       
-      @if(Model.Score < 6)
+      @if(Model.Score < 6 && !Model.Win())
       {
         <form action="/hangman/{letter}" method="post">
           <label for="letter">Type a letter here for your guess</label>
@@ -70,8 +77,6 @@
         </form>
       } else {
         <p>You Lose!!!!</p>
-        <form action="/" method="get">
-          <button type="submit" class="btn btn-primary">Play again</button>
-        </form>
+        <p>Button to play again</p>
       }
     </div>

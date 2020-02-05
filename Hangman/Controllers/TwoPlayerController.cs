@@ -30,20 +30,7 @@ namespace Hangman.Controllers
       if(duplicate){
         Console.WriteLine("Already guessed this letter. Try a different letter.");
       } else {
-        // Add letter to the letters list
         playerWord.AddLetter(letter);
-        char[] blanks = playerWord.FillInBlanks();
-        List<string> allLetters = playerWord.LettersBank();
-        foreach(char i in blanks)
-        {
-          Console.WriteLine("FillInBlanks: " + i);
-        }
-        Console.WriteLine(playerWord.FillInBlanks().Length);
-        foreach(string i in allLetters)
-        {
-          Console.WriteLine("LettersBank: " + i);
-        }
-        
         bool isMatch = playerWord.CheckLetter();
         if(isMatch)
         {

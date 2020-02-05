@@ -4,9 +4,6 @@
 }
 
     <div class="container">
-      <div>
-        <img src="img/download.png" alt="noose picture">
-      </div>
       <div class="spaces">
         <div class="row">
           @foreach(char i in Model.FillInBlanks())
@@ -15,14 +12,20 @@
               {
                 <pre>  </pre>
               } else{
-                <pre>__ </pre>
+                <pre>@i </pre>
               }
             }
         </div>
       </div>
-      @if(Model.Score == 1) 
+      @if(Model.Score == 0) {
+        <div>
+          <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
+        </div>
+      } else if(Model.Score == 1) 
       {
-        <p>Head</p>
+        <div>
+          <img src="~/img/Hangman1.png" width="200" height="390" alt="1 wrong, noose picture">
+        </div>
       } else if(Model.Score == 2)
       {
         <p>Head plus Torso</p>
@@ -34,12 +37,7 @@
         <p>Head plus Torso plus Left Arm plus Right Arm</p>
       }
 
-      @if(Model.CheckLetter()) {
-        <p>it matched</p>
-      }
-      else{
-        <p>it doesnt match</p>
-      }
+
       <h2>Letter Bank:</h2>
       @foreach(string i in Model.LettersBank())
       {

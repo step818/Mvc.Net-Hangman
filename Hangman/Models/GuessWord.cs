@@ -36,11 +36,11 @@ namespace Hangman.Models
     //   return _gLetters;
     public bool Win()
     {
-      char[] temp = FillInBlanks(); // ['*','*','*',...]
+      char[] temp = FillInBlanks(); // ['_','','_',...]
 
       for(int i = 0; i < temp.Length; i++)
       {
-        if(temp[i] == '*')
+        if(temp[i] == '_')
         {
           return false;
         } 
@@ -111,7 +111,7 @@ namespace Hangman.Models
           } else {
             blanks[i] = '_';
           }
-        }
+        }  //  ['_',' ','_','_']
       }
       return blanks;
     }
