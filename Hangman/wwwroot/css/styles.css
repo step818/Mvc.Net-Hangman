@@ -3,17 +3,3 @@
   font-size: 100px;
   background-color: teal;
 }
-.spaces{
-  font-size: "200px";
-  font-weight: bolder;
-  color: purple;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.row {
-  display: inline;
-  font-size: "200px";
-  color: green;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: blueviolet;
-}
