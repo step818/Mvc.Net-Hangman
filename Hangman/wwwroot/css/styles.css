@@ -9,3 +9,11 @@
   color: purple;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.row {
+  display: inline;
+  font-size: "200px";
+  color: green;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: blueviolet;
+}

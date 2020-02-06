@@ -2,7 +2,14 @@
 @{
   Layout = "_Layout";
 }
-
+<style>
+  .row {
+    width: 300px;
+    height: 100px;
+    padding: 15px;
+    border: 1px solid blue;
+  }
+</style>
     <div class="container">
       <div class="spaces">
         <div class="row">
@@ -10,9 +17,9 @@
             {
               @if(i == ' ')
               {
-                <pre>  </pre>
+                <h1><pre>  </pre></h1>
               } else{
-                <pre>@i </pre>
+                <h1><pre>@i </pre></h1>
               }
             }
         </div>
@@ -55,10 +62,12 @@
       </div>
 
       <h2>Letter Bank:</h2>
-      @foreach(string i in Model.LettersBank())
-      {
-        <p>@i</p>
-      }
+      <div class="row">
+        @foreach(string i in Model.LettersBank())
+        {
+          <h1>@i </h1>
+        }
+      </div>
 
       @if(Model.Win())
       {
