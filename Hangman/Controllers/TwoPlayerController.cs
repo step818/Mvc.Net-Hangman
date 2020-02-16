@@ -11,9 +11,11 @@ namespace Hangman.Controllers
     [HttpGet("/two")]
     public ActionResult Index()
     {
+      MysteryWord.ClearAllWords();
+      MysteryWord.ClearAllLetters();
       return View();
     }
-    // Brings up Show which is main gane page
+    // Brings up Show which is main game page
     [HttpPost("/hangman")]
     public ActionResult Show(string word)
     {
@@ -43,7 +45,6 @@ namespace Hangman.Controllers
         if(lose)
         {
           Console.WriteLine("You lose");
-
         }
       }
       // Console.WriteLine(newLetter.Id);

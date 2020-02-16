@@ -2,21 +2,27 @@
 @{
   Layout = "_Layout";
 }
-
-    <div class="container">
-      <div class="spaces">
-        <div class="row">
-          @foreach(char i in Model.FillInBlanks())
-            {
-              @if(i == ' ')
-              {
-                <h1><pre>  </pre></h1>
-              } else{
-                <h1><pre>@i </pre></h1>
-              }
-            }
-        </div>
-      </div>
+<style>
+  .row {
+    width: auto;
+    height: auto;
+    padding: 15px;
+    margin: 20px;
+    background-color: grey;
+    border: 1px solid black;
+  }
+  #spaces {
+    width: auto;
+  }
+  .formGuess {
+    background-image: linear-gradient(greenyellow, darkgreen);
+    border: 1px solid black;
+    height: 3%;
+    width: 60%;
+    padding: 3%;
+  }
+</style>
+    <div class="noosePicture" style="margin-left: 20%;">
       @if(Model.Score == 0) {
         <div>
           <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
@@ -36,13 +42,30 @@
       {
         <p>Head plus Torso plus Left Arm plus Right Arm</p>
       }
+    </div>
 
+    <div class="container">
+      <div class="spaces">
+        <div class="row">
+          @foreach(char i in Model.FillInBlanks())
+            {
+              @if(i == ' ')
+              {
+                <h1><pre>  </pre></h1>
+              } else{
+                <h1><pre>@i </pre></h1>
+              }
+            }
+        </div>
+      </div>
 
-      <h2>Letter Bank:</h2>
+    <div class="row">
+      <h2 style="margin-right: 30px;">Letter Bank:</h2>
       @foreach(string i in Model.LettersBank())
       {
         <p>@i</p>
       }
+    </div>  
 
       @if(Model.Win())
       {
@@ -54,13 +77,12 @@
       
       @if(Model.Score < 6 && !Model.Win())
       {
-        <form action="/hangman/{letter}" method="post">
-          <label for="letter">Type a letter here for your guess</label>
-          <input id="letter" name="letter" type="text">
-          <button type="submit">Submit guess</button>
-        </form>
-      } else {
-        <p>You Lose!!!!</p>
-        <p>Button to play again</p>
+        <div class="formGuess">
+          <form action="/hangman/{letter}" method="post">
+            <label for="letter">Type a letter here for your guess</label>
+            <input id="letter" name="letter" type="text">
+            <button type="submit">Submit guess</button>
+          </form>
+        </div>
       }
     </div>

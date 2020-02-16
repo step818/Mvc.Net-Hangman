@@ -4,7 +4,7 @@
 }
 <style>
   .row {
-    width: 50%;
+    width: auto;
     height: auto;
     padding: 15px;
     margin: 20px;
@@ -12,24 +12,17 @@
     border: 1px solid black;
   }
   #spaces {
-    width: 75%;
+    width: auto;
+  }
+  .formGuess {
+    background-image: linear-gradient(greenyellow, darkgreen);
+    border: 1px solid black;
+    height: 3%;
+    width: 60%;
+    padding: 3%;
   }
 </style>
-    <div class="container">
-      <div class="spaces">
-        <div class="row" id="spaces">
-          @foreach(char i in Model.FillInBlanks())
-            {
-              @if(i == ' ')
-              {
-                <h1><pre>  </pre></h1>
-              } else{
-                <h1><pre>@i </pre></h1>
-              }
-            }
-        </div>
-      </div>
-      <div class="noosePicture">
+      <div class="noosePicture" style="margin-left: 20%;">
         @if(Model.Score == 0) {
           <div>
             <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
@@ -66,8 +59,24 @@
         }
       </div>
 
-      <h2>Letter Bank:</h2>
+      <div class="container">
+      <div class="spaces">
+        <div class="row" id="spaces">
+          @foreach(char i in Model.FillInBlanks())
+            {
+              @if(i == ' ')
+              {
+                <h1><pre>  </pre></h1>
+              } else{
+                <h1><pre>@i </pre></h1>
+              }
+            }
+        </div>
+      </div>
+
+      
       <div class="row">
+        <h2 style="margin-right:30px;">Letter Bank:</h2>
         @foreach(string i in Model.LettersBank())
         {
           <h1>@i</h1><pre>  </pre>
@@ -77,19 +86,21 @@
       @if(Model.Win())
       {
         <p>You Win!</p>
-        <form action="/" method="get">
+        <form action="/two" method="get">
           <button type="submit" class="btn btn-primary">Play again</button>
         </form>
       }
       
       @if(Model.Score < 6 && !Model.Win())
       {
+      <div class="formGuess">
         <form action="/hangman/{letter}" method="post">
           <label for="letter">Type a letter here for your guess</label>
           <input id="letter" name="letter" type="text">
           <button type="submit">Submit guess</button>
         </form>
-      } else {
+      </div>
+      } else if(Model.Score == 6) {
         <p>You Lose!!!!</p>
         <p>Button to play again</p>
       }
