@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      PlayHangman
-    </title>
-  </head>
-  <body>
+@using Hangman.Models;
+@{
+  Layout = "_Layout";
+}
+<div>
     <p>Player creating the string, type your string in the form below.</p>
     <form action="/hangman" method="post">
       <label for="word">Dont let the other player see</label>
       <input id="word" name="word" type="text">
       <button type="submit">Submit</button>
     </form>
-  </body>
-</html>
+    <div class="backGround">
+      <img src="~/img/HangmanCover.png" width="100%" height="100%">
+    </div>
+</div>
+

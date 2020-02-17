@@ -21,87 +21,103 @@
     width: 60%;
     padding: 3%;
   }
+  .hangman1{
+    display: none;
+  }
 </style>
-      <div class="noosePicture" style="margin-left: 20%;">
-        @if(Model.Score == 0) {
-          <div>
-            <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
-          </div>
-        } else if (Model.Score == 1) {
-          <div>
-            <img src="~/img/Hangman1.png" width="200" height="390" alt="1 wrong, noose picture">
-          </div>
-        } else if(Model.Score == 2)
+<div class="hangman1">
+  <img src="~/img/Hangman1.png" width="200" height="390" alt="1 wrong, noose test">
+</div>
+
+<div class="container">
+  <div class="noosePicture" style="margin-left: 20%;">
+    @if(Model.Score == 0) {
+      <div>
+        <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
+      </div>
+    } else if (Model.Score == 1) {
+      <div>
+        <img src="~/img/Hangman1.png" width="200" height="390" alt="1 wrong, noose picture">
+      </div>
+    } else if(Model.Score == 2)
+    {
+      <div>
+        <img src="~/img/Hangman2.png" width="200" height="390" alt="1 wrong, noose picture">
+      </div>
+    } else if(Model.Score == 3)
+    {
+      <div>
+        <img src="~/img/Hangman3.png" width="200" height="390" alt="1 wrong, noose picture">
+      </div>
+    } else if(Model.Score == 4)
+    {
+      <div>
+        <img src="~/img/Hangman4.png" width="200" height="390" alt="1 wrong, noose picture">
+      </div>
+    } else if(Model.Score == 5)
+    {
+      <div>
+        <img src="~/img/Hangman5.png" width="200" height="390" alt="1 wrong, noose picture">
+      </div>
+    } else if(Model.Score == 6)
+    {
+      <div>
+        <img src="~/img/Hangman6.png" width="200" height="390" alt="1 wrong, noose picture">
+      </div>
+    }
+  </div>
+
+  <div class="spaces">
+    <div class="row" id="spaces">
+      @foreach(char i in Model.FillInBlanks())
         {
-          <div>
-            <img src="~/img/Hangman2.png" width="200" height="390" alt="1 wrong, noose picture">
-          </div>
-        } else if(Model.Score == 3)
-        {
-          <div>
-            <img src="~/img/Hangman3.png" width="200" height="390" alt="1 wrong, noose picture">
-          </div>
-        } else if(Model.Score == 4)
-        {
-          <div>
-            <img src="~/img/Hangman4.png" width="200" height="390" alt="1 wrong, noose picture">
-          </div>
-        } else if(Model.Score == 5)
-        {
-          <div>
-            <img src="~/img/Hangman5.png" width="200" height="390" alt="1 wrong, noose picture">
-          </div>
-        } else if(Model.Score == 6)
-        {
-          <div>
-            <img src="~/img/Hangman6.png" width="200" height="390" alt="1 wrong, noose picture">
-          </div>
+          @if(i == ' ')
+          {
+            <h1><pre>  </pre></h1>
+          } else{
+            <h1><pre>@i </pre></h1>
+          }
         }
-      </div>
-
-      <div class="container">
-      <div class="spaces">
-        <div class="row" id="spaces">
-          @foreach(char i in Model.FillInBlanks())
-            {
-              @if(i == ' ')
-              {
-                <h1><pre>  </pre></h1>
-              } else{
-                <h1><pre>@i </pre></h1>
-              }
-            }
-        </div>
-      </div>
-
-      
-      <div class="row">
-        <h2 style="margin-right:30px;">Letter Bank:</h2>
-        @foreach(string i in Model.LettersBank())
-        {
-          <h1>@i</h1><pre>  </pre>
-        }
-      </div>
-
-      @if(Model.Win())
-      {
-        <p>You Win!</p>
-        <form action="/two" method="get">
-          <button type="submit" class="btn btn-primary">Play again</button>
-        </form>
-      }
-      
-      @if(Model.Score < 6 && !Model.Win())
-      {
-      <div class="formGuess">
-        <form action="/hangman/{letter}" method="post">
-          <label for="letter"><strong>Type a letter here for your guess</strong></label>
-          <input id="letter" name="letter" type="text">
-          <button type="submit">Submit guess</button>
-        </form>
-      </div>
-      } else if(Model.Score == 6) {
-        <p>You Lose!!!!</p>
-        <p>Button to play again</p>
-      }
     </div>
+  </div>
+
+  
+  <div class="row">
+    <h2 style="margin-right:30px;">Letter Bank:</h2>
+    @foreach(string i in Model.LettersBank())
+    {
+      <h1>@i</h1><pre>  </pre>
+    }
+  </div>
+
+  @if(Model.Win())
+  {
+    <p>You Win!</p>
+    <form action="/two" method="get">
+      <button type="submit" class="btn btn-primary">Play again</button>
+    </form>
+  }
+  
+  @if(Model.Score < 6 && !Model.Win())
+  {
+  <div class="formGuess">
+    <form action="/hangman/{letter}" method="post">
+      <label for="letter"><strong>Type a letter here for your guess</strong></label>
+      <input id="letter" name="letter" type="text">
+      <button type="submit">Submit guess</button>
+    </form>
+  </div>
+  } else if(Model.Score == 6) {
+    <p>You Lose!!!!</p>
+    <p>Button to play again</p>
+  }
+  <script>
+    $(document).ready(function(){
+    $("#submitButton").on("click",function()
+    {
+      alert('Your Message');
+    });
+
+    });
+</script>
+</div>

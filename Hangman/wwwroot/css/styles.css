@@ -1,5 +1,9 @@
+
 .jumbotron {
   color: red;
   font-size: 100px;
   background-color: teal;
+}
+.hangman1 {
+  display: none;
 }

@@ -30,6 +30,7 @@ namespace Hangman.Controllers
       MysteryWord playerWord = MysteryWord.Find(1);
       bool duplicate = playerWord.AlreadyGuessed(letter);
       if(duplicate){
+        ViewBag.Message = string.Format("Hello {0}.\\nCurrent Date and Time: {1}", letter, DateTime.Now.ToString());
         Console.WriteLine("Already guessed this letter. Try a different letter.");
       } else {
         playerWord.AddLetter(letter);
