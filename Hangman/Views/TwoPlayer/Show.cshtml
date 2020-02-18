@@ -5,14 +5,15 @@
 <style>
   .row {
     width: auto;
-    height: auto;
+    height: 20px;
     padding: 15px;
     margin: 20px;
     background-color: grey;
     border: 1px solid black;
   }
   #spaces {
-    width: auto;
+    width: 100%;
+    display: inline-block;
   }
   .formGuess {
     background-image: linear-gradient(greenyellow, darkgreen);
@@ -20,8 +21,52 @@
     height: 3%;
     width: 60%;
     padding: 3%;
+    vertical-align: auto;
+  }
+  .container {
+    border: 3px solid red;
+    display: grid;
+    grid-template-columns: [first] auto [meridian] auto [last];
+    grid-template-rows: repeat(3, 30% [row-start]);
+    padding: 10px;
+  }
+  .item-a {
+    border: 1px solid blue;
+    grid-column-start: first;
+    grid-column-end: meridian;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .item-b {
+    border: 1px solid orange;
+    grid-column-start: 1;
+    grid-column-end: meridian;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+  .item-c {
+    border: 1px solid green;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: block;
+  }
+  .item-d {
+    border: 1px solid purple;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 25px;
+    
+  }
+  .item-e {
+    border: 1px solid yellow;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
   }
 </style>
+
+<div class="container">
+
+  <div class="item-a">
     <div class="noosePicture" style="margin-left: 20%;">
       @if(Model.Score == 0) {
         <div>
@@ -43,46 +88,53 @@
         <p>Head plus Torso plus Left Arm plus Right Arm</p>
       }
     </div>
+  </div>
 
-    <div class="container">
-      <div class="spaces">
-        <div class="row">
-          @foreach(char i in Model.FillInBlanks())
-            {
-              @if(i == ' ')
-              {
-                <h1><pre>  </pre></h1>
-              } else{
-                <h1><pre>@i </pre></h1>
-              }
-            }
-        </div>
-      </div>
-
+  <div class="item-b">
+    @if(Model.Win())
+    {
+      <p>You Win!</p>
+      <form action="/" method="get">
+        <button type="submit" class="btn btn-primary">Play again</button>
+      </form>
+    }
+  </div>
+    
+  <div class="item-c">
     <div class="row">
-      <h2 style="margin-right: 30px;">Letter Bank:</h2>
-      @foreach(string i in Model.LettersBank())
-      {
-        <p>@i</p>
-      }
-    </div>  
-
-      @if(Model.Win())
-      {
-        <p>You Win!</p>
-        <form action="/" method="get">
-          <button type="submit" class="btn btn-primary">Play again</button>
-        </form>
-      }
-      
-      @if(Model.Score < 6 && !Model.Win())
-      {
-        <div class="formGuess">
-          <form action="/hangman/{letter}" method="post">
-            <label for="letter"><strong>Type a letter here for your guess</strong></label>
-            <input id="letter" name="letter" type="text">
-            <button type="submit">Submit guess</button>
-          </form>
-        </div>
-      }
+      <div class="spaces">
+        @foreach(char i in Model.FillInBlanks())
+          {
+            @if(i == ' ')
+            {
+              <h1><pre>  </pre></h1>
+            } else{
+              <h1><pre>@i </pre></h1>
+            }
+          }
+      </div>
     </div>
+  </div>
+    
+
+  <div class="item-d">
+    @if(Model.Score < 6 && !Model.Win())
+    {
+      <div class="formGuess">
+        <form action="/hangman/{letter}" method="post">
+          <label for="letter"><strong>Type a letter here for your guess</strong></label>
+          <input id="letter" name="letter" type="text">
+          <button type="submit">Submit guess</button>
+        </form>
+      </div>
+    }
+  </div>
+
+  <div class="item-e">
+    <h2 style="margin-right: 30px;">Letter Bank:</h2>
+    @foreach(string i in Model.LettersBank())
+    {
+      <p>@i</p>
+    }
+  </div>
+</div>
