@@ -11,6 +11,7 @@ namespace Hangman.Models
     public static char[] charArr { get; set; }
     public static List<string> _letters = new List<string>{};
     public static List<MysteryWord> _words = new List<MysteryWord>{};
+    public static List<MysteryWord> _hard = new List<MysteryWord>{};
     public MysteryWord(string word)
     {
       Score = 0;
@@ -26,6 +27,13 @@ namespace Hangman.Models
     public static void ClearAllLetters()
     {
       _letters.Clear();
+    }
+    public static MysteryWord Generate()
+    {
+      // we want to populate the list first
+      // then we generate a random id number
+      // within range
+      // return that word
     }
     public static List<MysteryWord> GetAll()
     {

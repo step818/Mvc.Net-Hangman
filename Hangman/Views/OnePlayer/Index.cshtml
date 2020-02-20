@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      OnePlayer
-    </title>
-  </head>
-  <body>
-    <p>One player view</p>
-  </body>
-</html>
+@using Hangman.Models;
+@{
+  Layout = "_Layout";
+}
+<div class="wrap">
+  <p>Pik a category or difficulty and the computer will create a word for you to guess</p>
+  <form action="/easy" method="get">
+    <button type="submit">Easy</button>
+  </form>
+  <form action="/medium" method="get">
+    <button type="submit">medium</button>
+  </form>
+  <form action="/hard" method="get">
+    <button type="submit">hard</button>
+  </form>
+</div>
