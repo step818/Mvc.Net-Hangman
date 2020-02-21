@@ -48,14 +48,6 @@ namespace Hangman.Controllers
           Console.WriteLine("You lose");
         }
       }
-      // Console.WriteLine(newLetter.Id);
-      // Console.WriteLine(isMatch);
-      // foreach(string i in allLetters)
-      // {
-      //   Console.WriteLine(i);
-      // }
-      
-      //This is where you input a letter to the Guessword model
       return View(playerWord);
     }
   }

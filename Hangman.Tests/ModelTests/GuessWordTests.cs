@@ -104,5 +104,13 @@ namespace Hangman.Tests
       char[] test = {'_','_','_','_',' ','_','_'};
       Assert.AreEqual(test[4], result[4]);
     }
+    [TestMethod]
+    public void Generate_ReturnsRandomWord_MysteryWord()
+    {
+      MysteryWord newWord = MysteryWord.Generate(1);
+      string listWord = newWord.Word;
+      string result = "psyche";
+      Assert.AreEqual(result, listWord);
+    }
   }
 }

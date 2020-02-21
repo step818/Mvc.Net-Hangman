@@ -28,13 +28,6 @@ namespace Hangman.Models
     {
       _letters.Clear();
     }
-    public static MysteryWord Generate()
-    {
-      // we want to populate the list first
-      // then we generate a random id number
-      // within range
-      // return that word
-    }
     public static List<MysteryWord> GetAll()
     {
       return _words;
@@ -70,6 +63,21 @@ namespace Hangman.Models
     public void AddLetter(string letter)
     {
       _letters.Add(letter.ToLower());
+    }
+    public static MysteryWord FindRandom(int searchId)
+    {
+      return _hard[searchId-1];
+    }
+    public static MysteryWord Generate(int randomId)
+    {
+      // randomId should be in Range(1,6);
+      _hard.Add(new MysteryWord("psyche"));
+      _hard.Add(new MysteryWord("matrix"));
+      _hard.Add(new MysteryWord("peekaboo"));
+      _hard.Add(new MysteryWord("galvanize"));
+      _hard.Add(new MysteryWord("fuchsia"));
+      _hard.Add(new MysteryWord("buzzwords"));
+      return _hard[randomId-1];
     }
     public List<string> LettersBank()
     {
