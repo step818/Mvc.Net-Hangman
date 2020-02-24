@@ -20,17 +20,23 @@ namespace Hangman.Controllers
     public ActionResult Show()
     {  
       MysteryWord newWord = MysteryWord.Generate();
+      Console.WriteLine(newWord.Word);
+      Console.WriteLine(MysteryWord.number);
       return View(newWord);
     }
     [HttpPost("/hard/{letter}")]
     public ActionResult Update(string letter)
     {
       // Use the word that was just created  
-      MysteryWord playerWord = MysteryWord.FindRandom();
+      MysteryWord playerWord = MysteryWord.FindRandom(MysteryWord.number);
+      Console.WriteLine(MysteryWord.number);
+      Console.WriteLine("hello");
+      Console.WriteLine(playerWord.Word);
       bool duplicate = playerWord.AlreadyGuessed(letter);
       if(duplicate){
-        ViewBag.Message = string.Format("Hello {0}.\\nCurrent Date and Time: {1}", letter, DateTime.Now.ToString());
+        Console.WriteLine(playerWord.Score);
         Console.WriteLine("Already guessed this letter. Try a different letter.");
+        
       } else {
         playerWord.AddLetter(letter);
         bool isMatch = playerWord.CheckLetter();

@@ -132,7 +132,7 @@
     @if(Model.Score < 6 && !Model.Win())
     {
     <div class="formGuess">
-      <form action="/hangman/{letter}" method="post">
+      <form action="/hard/{letter}" method="post">
         <label for="letter"><strong>Type a letter here for your guess</strong></label>
         <input id="letter" name="letter" type="text">
         <button type="submit">Submit guess</button>

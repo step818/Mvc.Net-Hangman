@@ -12,9 +12,7 @@ namespace Hangman.Models
     public static List<string> _letters = new List<string>{};
     public static List<MysteryWord> _words = new List<MysteryWord>{};
     public static List<MysteryWord> _hard = new List<MysteryWord>{};
-    public static Random r = new Random();
-    public static int randomId = RandomElement();
-    
+    public static int number { get; set; }
     public MysteryWord(string word)
     {
       Score = 0;
@@ -39,9 +37,6 @@ namespace Hangman.Models
     {
       return _words;
     }
-    // public List<string> GetAllLetters()
-    // {
-    //   return _gLetters;
     public bool Win()
     {
       char[] temp = FillInBlanks(); // ['_','','_',...]
@@ -55,6 +50,21 @@ namespace Hangman.Models
       }
       return true;
     }
+    public static int RandomId()
+    {
+      DateTime time = DateTime.Now;
+      int secs = int.Parse(time.ToString("ss"));
+      // Get a random Id within range of _hard list
+      if(secs > 10)
+      {
+        secs = secs % 10;
+      }
+      if(secs > 5 && secs < 10) {
+        secs = secs - 4;
+      }
+      number = secs;
+      return secs;
+    }
     public bool isGameOver()
     {
       if(Score==6) {
@@ -63,14 +73,13 @@ namespace Hangman.Models
         return false;
       }
     }
-    public static MysteryWord FindRandom()
-    {
-      Console.WriteLine(randomId);
-      return _hard[randomId];
-    }
     public static MysteryWord Find(int searchId)
     {
       return _words[searchId-1];
+    }
+    public static MysteryWord FindRandom(int id)
+    {
+      return _hard[id];
     }
     public void AddLetter(string letter)
     {
@@ -79,19 +88,21 @@ namespace Hangman.Models
     public static MysteryWord Generate()
     {
       // randomId should be in Range(1,6);
-      _hard.Add(new MysteryWord("psyche"));
+      MysteryWord matrix = new MysteryWord("revolutions");
       _hard.Add(new MysteryWord("matrix"));
       _hard.Add(new MysteryWord("peekaboo"));
       _hard.Add(new MysteryWord("galvanize"));
       _hard.Add(new MysteryWord("fuchsia"));
       _hard.Add(new MysteryWord("buzzwords"));
-      
-      // _words.Add(_hard[randomId]);
-      return _hard[randomId];
+      _hard.Add(new MysteryWord("psyche"));
+
+      // Get random id
+      int id = RandomId();
+      return _hard[id];
     }
     public static int RandomElement()
     {
-      System.DateTime moment = new System.DateTime();
+      DateTime moment = DateTime.Now;      
       int rando = moment.Second;
       if(rando > _hard.Count-1) {
         if(rando > 55) {
@@ -160,7 +171,7 @@ namespace Hangman.Models
           } else {
             blanks[i] = '_';
           }
-        }  //  ['_',' ','_','_']
+        }
       }
       return blanks;
     }
