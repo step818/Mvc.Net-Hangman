@@ -105,7 +105,9 @@
   </div>
 
   <div class="item-b">
-    
+    <form action="/" method="get">
+      <button type="submit" class="btn btn-success">Main menu</button>
+    </form>
   </div>
 
   <div class="item-c">
@@ -136,14 +138,18 @@
         <button type="submit">Submit guess</button>
       </form>
     </div>
-    } else if(Model.Score == 6) {
+    } 
+      else if(Model.Score == 6) 
+    {
       <p>You Lose!!!!</p>
-      <p>Button to play again</p>
+      <form action="/" method="get">
+        <button type="submit" class="btn btn-primary">Play again</button>
+      </form>
     }
-    @if(Model.Win())
+      else if(Model.Win())
     {
       <p>You Win!</p>
-      <form action="/two" method="get">
+      <form action="/" method="get">
         <button type="submit" class="btn btn-primary">Play again</button>
       </form>
     }

@@ -12,6 +12,9 @@ namespace Hangman.Models
     public static List<string> _letters = new List<string>{};
     public static List<MysteryWord> _words = new List<MysteryWord>{};
     public static List<MysteryWord> _hard = new List<MysteryWord>{};
+    public static Random r = new Random();
+    public static int randomId = RandomElement();
+    
     public MysteryWord(string word)
     {
       Score = 0;
@@ -23,6 +26,10 @@ namespace Hangman.Models
     public static void ClearAllWords()
     {
       _words.Clear();
+    }
+    public static void ClearAllHardWords()
+    {
+      _hard.Clear();
     }
     public static void ClearAllLetters()
     {
@@ -56,6 +63,11 @@ namespace Hangman.Models
         return false;
       }
     }
+    public static MysteryWord FindRandom()
+    {
+      Console.WriteLine(randomId);
+      return _hard[randomId];
+    }
     public static MysteryWord Find(int searchId)
     {
       return _words[searchId-1];
@@ -64,11 +76,7 @@ namespace Hangman.Models
     {
       _letters.Add(letter.ToLower());
     }
-    public static MysteryWord FindRandom(int searchId)
-    {
-      return _hard[searchId-1];
-    }
-    public static MysteryWord Generate(int randomId)
+    public static MysteryWord Generate()
     {
       // randomId should be in Range(1,6);
       _hard.Add(new MysteryWord("psyche"));
@@ -77,7 +85,32 @@ namespace Hangman.Models
       _hard.Add(new MysteryWord("galvanize"));
       _hard.Add(new MysteryWord("fuchsia"));
       _hard.Add(new MysteryWord("buzzwords"));
-      return _hard[randomId-1];
+      
+      // _words.Add(_hard[randomId]);
+      return _hard[randomId];
+    }
+    public static int RandomElement()
+    {
+      System.DateTime moment = new System.DateTime();
+      int rando = moment.Second;
+      if(rando > _hard.Count-1) {
+        if(rando > 55) {
+          rando = (rando - 40) % 10;
+        }
+        if(rando > 45) {
+          rando = (rando - 30) % 10;
+        }
+        if(rando > 35) {
+          rando = (rando-20) % 10;
+        }
+        if(rando > 25) {
+          rando = (rando - 10) % 10;
+        }
+        if(rando > 15) {
+          rando = rando % 10;
+        }
+      }
+      return rando;
     }
     public List<string> LettersBank()
     {

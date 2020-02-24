@@ -12,24 +12,21 @@ namespace Hangman.Controllers
     {
       MysteryWord.ClearAllWords();
       MysteryWord.ClearAllLetters();
+      MysteryWord.ClearAllHardWords();
       return View();
     }
 
     [HttpGet("/hard")]
     public ActionResult Show()
-    {
-      Random random = new Random();    
-      int rand = random.Next(1, 6);   
-      MysteryWord newWord = MysteryWord.Generate(rand);
+    {  
+      MysteryWord newWord = MysteryWord.Generate();
       return View(newWord);
     }
     [HttpPost("/hard/{letter}")]
     public ActionResult Update(string letter)
     {
-      // Use the word that was just created
-      Random random = new Random();    
-      int rand = random.Next(1, 6);  
-      MysteryWord playerWord = MysteryWord.FindRandom(rand);
+      // Use the word that was just created  
+      MysteryWord playerWord = MysteryWord.FindRandom();
       bool duplicate = playerWord.AlreadyGuessed(letter);
       if(duplicate){
         ViewBag.Message = string.Format("Hello {0}.\\nCurrent Date and Time: {1}", letter, DateTime.Now.ToString());
