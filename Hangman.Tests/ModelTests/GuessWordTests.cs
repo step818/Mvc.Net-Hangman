@@ -39,28 +39,6 @@ namespace Hangman.Tests
       List<MysteryWord> result = MysteryWord.GetAll();
       CollectionAssert.AreEqual(result, newList);
     }
-    // [TestMethod]
-    // public void AddList_ReturnLetterWithinWord_List()
-    // {
-    //   // Create Word and add Letter instances to List through MysteryWord
-    //   string myWord = "poop";
-    //   MysteryWord newWord = new MysteryWord(myWord);
-    //   // Set up an arranged list through Letter
-    //   string urLetter1 = "a";
-    //   string urLetter2 = "s";
-    //   Letter newLetter1 = new Letter(urLetter1, newWord);
-    //   Letter newLetter2 = new Letter(urLetter2, newWord);
-    //   // Arranged List with newLetter1.Bet="a", newLetter2.Bet="b"
-    //   List<string> urLetterGuesses = new List<string> {newLetter1.Bet, newLetter2.Bet};
-    //   // Add instances of Letter Class to MysteryWord instance of newWord
-    //   newWord.AddLetter(newLetter1.Bet);
-    //   newWord.AddLetter(newLetter2.Bet);
-    //   // Result List with newWord.Word="poop" , newWord.Id= 1 , newWord.Letters = {newLetter1.Bet, newLetter2.Bet} = {"a", "b"} 
-    //   // Letters property no longer in MysteryWord
-    //   List<string> result = newWord.Letters;
-    //   // Assert
-    //   CollectionAssert.AreEqual(result, urLetterGuesses);
-    // }
     [TestMethod]
     public void Find_ReturnWordListThis_MysteryWord()
     {
@@ -105,11 +83,29 @@ namespace Hangman.Tests
       Assert.AreEqual(test[4], result[4]);
     }
     [TestMethod]
+    public void RandomId_ReturnsWithinRange_Int()
+    {
+      int number = MysteryWord.RandomId();
+      int testi;
+      if(number > 0 || number < 6){
+        testi = number;
+      } else {
+        testi = -1;
+      }
+      Assert.AreEqual(number, testi);
+    }
+    [TestMethod]
     public void Generate_ReturnsRandomWord_MysteryWord()
     {
-      MysteryWord newWord = MysteryWord.Generate(1);
+      MysteryWord newWord = MysteryWord.Generate();
       string listWord = newWord.Word;
-      string result = "psyche";
+      string result;
+      if(MysteryWord._hard.Contains(newWord))
+      {
+        result = listWord;
+      } else {
+        result = null;
+      }
       Assert.AreEqual(result, listWord);
     }
   }

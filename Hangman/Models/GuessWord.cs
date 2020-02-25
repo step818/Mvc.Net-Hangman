@@ -100,37 +100,10 @@ namespace Hangman.Models
       int id = RandomId();
       return _hard[id];
     }
-    public static int RandomElement()
-    {
-      DateTime moment = DateTime.Now;      
-      int rando = moment.Second;
-      if(rando > _hard.Count-1) {
-        if(rando > 55) {
-          rando = (rando - 40) % 10;
-        }
-        if(rando > 45) {
-          rando = (rando - 30) % 10;
-        }
-        if(rando > 35) {
-          rando = (rando-20) % 10;
-        }
-        if(rando > 25) {
-          rando = (rando - 10) % 10;
-        }
-        if(rando > 15) {
-          rando = rando % 10;
-        }
-      }
-      return rando;
-    }
     public List<string> LettersBank()
     {
       return _letters;
     }
-    // public string FindLetter(int searchId)
-    // {
-    //   return _gLetters[searchId-1];
-    // }
     public bool AlreadyGuessed(string letter)
     {
       if (_letters.Contains(letter.ToLower()))
