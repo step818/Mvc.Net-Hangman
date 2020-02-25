@@ -12,7 +12,8 @@ namespace Hangman.Models
     public static List<string> _letters = new List<string>{};
     public static List<MysteryWord> _words = new List<MysteryWord>{};
     public static List<MysteryWord> _hard = new List<MysteryWord>{};
-    public static int number { get; set; }
+    public static int randomId { get; set; }
+    public static int counter { get; set; }
     public MysteryWord(string word)
     {
       Score = 0;
@@ -62,8 +63,8 @@ namespace Hangman.Models
       if(secs > 5 && secs < 10) {
         secs = secs - 4;
       }
-      number = secs;
-      return secs;
+      randomId = secs;
+      return randomId;
     }
     public bool isGameOver()
     {
@@ -79,7 +80,7 @@ namespace Hangman.Models
     }
     public static MysteryWord FindRandom(int id)
     {
-      return _hard[id];
+      return _words[id];
     }
     public void AddLetter(string letter)
     {
@@ -89,6 +90,12 @@ namespace Hangman.Models
     {
       // randomId should be in Range(1,6);
       MysteryWord matrix = new MysteryWord("revolutions");
+      MysteryWord matri = new MysteryWord("revolutions");
+      MysteryWord matrx = new MysteryWord("revolutions");
+      MysteryWord matix = new MysteryWord("revolutions");
+      MysteryWord marix = new MysteryWord("revolutions");
+      MysteryWord mtrix = new MysteryWord("revolutions");
+      MysteryWord atrix = new MysteryWord("revolutions");
       _hard.Add(new MysteryWord("matrix"));
       _hard.Add(new MysteryWord("peekaboo"));
       _hard.Add(new MysteryWord("galvanize"));
@@ -98,7 +105,7 @@ namespace Hangman.Models
 
       // Get random id
       int id = RandomId();
-      return _hard[id];
+      return _words[id];
     }
     public List<string> LettersBank()
     {

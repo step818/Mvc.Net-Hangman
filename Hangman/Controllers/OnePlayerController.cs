@@ -10,9 +10,12 @@ namespace Hangman.Controllers
     [HttpGet("/one")]
     public ActionResult Index()
     {
-      MysteryWord.ClearAllWords();
+      if(MysteryWord.counter > 4) {
+        MysteryWord.ClearAllWords();
+        MysteryWord.ClearAllHardWords();
+      }
       MysteryWord.ClearAllLetters();
-      MysteryWord.ClearAllHardWords();
+    
       return View();
     }
 
@@ -21,22 +24,17 @@ namespace Hangman.Controllers
     {  
       MysteryWord newWord = MysteryWord.Generate();
       Console.WriteLine(newWord.Word);
-      Console.WriteLine(MysteryWord.number);
+      Console.WriteLine(MysteryWord.randomId);
       return View(newWord);
     }
     [HttpPost("/hard/{letter}")]
     public ActionResult Update(string letter)
     {
       // Use the word that was just created  
-      MysteryWord playerWord = MysteryWord.FindRandom(MysteryWord.number);
-      Console.WriteLine(MysteryWord.number);
-      Console.WriteLine("hello");
-      Console.WriteLine(playerWord.Word);
+      MysteryWord playerWord = MysteryWord.FindRandom(MysteryWord.randomId);
       bool duplicate = playerWord.AlreadyGuessed(letter);
       if(duplicate){
-        Console.WriteLine(playerWord.Score);
         Console.WriteLine("Already guessed this letter. Try a different letter.");
-        
       } else {
         playerWord.AddLetter(letter);
         bool isMatch = playerWord.CheckLetter();
