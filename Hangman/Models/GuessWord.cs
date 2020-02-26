@@ -56,12 +56,12 @@ namespace Hangman.Models
       DateTime time = DateTime.Now;
       int secs = int.Parse(time.ToString("ss"));
       // Get a random Id within range of _hard list
-      if(secs > 10)
+      if(secs > 24 && secs % 2 == 0)
       {
-        secs = secs % 10;
+        secs = (secs / 3) + 5;
       }
-      if(secs > 5 && secs < 10) {
-        secs = secs - 4;
+      if(secs > 24 && secs % 2 != 0) {
+        secs = (secs / 3) + 4;
       }
       randomId = secs;
       return randomId;
@@ -88,20 +88,32 @@ namespace Hangman.Models
     }
     public static MysteryWord Generate()
     {
-      // randomId should be in Range(1,6);
-      MysteryWord matrix = new MysteryWord("revolutions");
-      MysteryWord matri = new MysteryWord("revolutions");
-      MysteryWord matrx = new MysteryWord("revolutions");
-      MysteryWord matix = new MysteryWord("revolutions");
-      MysteryWord marix = new MysteryWord("revolutions");
-      MysteryWord mtrix = new MysteryWord("revolutions");
-      MysteryWord atrix = new MysteryWord("revolutions");
-      _hard.Add(new MysteryWord("matrix"));
-      _hard.Add(new MysteryWord("peekaboo"));
-      _hard.Add(new MysteryWord("galvanize"));
-      _hard.Add(new MysteryWord("fuchsia"));
-      _hard.Add(new MysteryWord("buzzwords"));
-      _hard.Add(new MysteryWord("psyche"));
+      // randomId should be in Range(1,25);
+      MysteryWord matrix1 = new MysteryWord("matrix");
+      MysteryWord matri2 = new MysteryWord("peekaboo");
+      MysteryWord matrx3 = new MysteryWord("galvanize");
+      MysteryWord matix4 = new MysteryWord("fuchsia");
+      MysteryWord marix5 = new MysteryWord("buzzwords");
+      MysteryWord mtrix6 = new MysteryWord("psyche");
+      MysteryWord atrix7 = new MysteryWord("revolutions");
+      MysteryWord m1atri8x = new MysteryWord("jazziest");
+      MysteryWord ma2tri9 = new MysteryWord("cobweb");
+      MysteryWord mat10rx = new MysteryWord("buffoon");
+      MysteryWord mati11x = new MysteryWord("croquet");
+      MysteryWord marix12 = new MysteryWord("daiquiri");
+      MysteryWord mtrix13 = new MysteryWord("frizzled");
+      MysteryWord matrix14 = new MysteryWord("kilobyte");
+      MysteryWord matri15 = new MysteryWord("kiwifruit");
+      MysteryWord matrx16 = new MysteryWord("mnemonic");
+      MysteryWord matix17 = new MysteryWord("pneumatic");
+      MysteryWord marix18 = new MysteryWord("onyx");
+      MysteryWord mtrix19 = new MysteryWord("rickshaw");
+      MysteryWord matrix20 = new MysteryWord("nymph");
+      MysteryWord matri21 = new MysteryWord("luxury");
+      MysteryWord matrx22 = new MysteryWord("quixotic");
+      MysteryWord matix23 = new MysteryWord("megahertz");
+      MysteryWord marix24 = new MysteryWord("topaz");
+      MysteryWord mtrix25 = new MysteryWord("jukebox");
 
       // Get random id
       int id = RandomId();
