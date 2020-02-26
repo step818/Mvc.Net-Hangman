@@ -15,14 +15,6 @@
     width: 100%;
     display: inline-block;
   }
-  .formGuess {
-    background-image: linear-gradient(greenyellow, darkgreen);
-    border: 1px solid black;
-    height: 3%;
-    width: 60%;
-    padding: 3%;
-    vertical-align: auto;
-  }
   .container {
     border: 3px solid red;
     display: grid;
@@ -55,17 +47,30 @@
   }
   .item-d {
     border: 1px solid purple;
-    <h2 style="margin-right:30px; font-family:'Trade Winds','arial';">Letter Bank:</h2>
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding: 26px;
-    
+    background-color: darkblue;
   }
   .item-e {
     border: 1px solid black;
     grid-column: 2 / 3;
     grid-row: 3 / 4;
     background-color: cornflowerblue;
+  }
+  label {
+    background-image: linear-gradient( aquamarine, darkseagreen);
+    border: 1px solid black;
+    border-radius: 15px;
+    height: auto;
+    width: 50%;
+    padding: 3%;
+    text-align: center;
+  }
+  input {
+    -moz-box-shadow: inset -3px -3px 10px red;
+    -webkit-box-shadow: inset -3px -3px 10px blue;
+    box-shadow: inset -3px -3px 10px blue;
   }
 </style>
 
@@ -137,13 +142,11 @@
   <div class="item-d">
     @if(Model.Score < 6 && !Model.Win())
     {
-    <div class="formGuess">
-      <form action="/hangman/{letter}" method="post">
-        <label for="letter"><strong>Type a letter here for your guess</strong></label>
-        <input id="letter" name="letter" type="text">
-        <button type="submit">Submit guess</button>
-      </form>
-    </div>
+    <form action="/hangman/{letter}" method="post">
+      <label for="letter"><strong>Type a letter here for your guess</strong></label>
+      <input id="letter" name="letter" type="text" required style="border-radius: 15px;">
+      <button type="submit" style="border-radius: 15px; font-style: italic;background-color: #f7b31c;">Submit</button>
+    </form>
     } 
       else if(Model.Score == 6) 
     {
