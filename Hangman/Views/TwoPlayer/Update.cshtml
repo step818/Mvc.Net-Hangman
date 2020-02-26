@@ -9,10 +9,9 @@
     height: 70px;
     padding: 15px;
     margin: 10px;
-    
+    font-family: 'Lacquer', 'arial', 'sans-serif';
   }
   #spaces {
-    width: 100%;
     display: inline-block;
   }
   .container {
@@ -44,6 +43,8 @@
     grid-row: 1 / 2;
     display: inline-block;
     background-color: goldenrod;
+    font-size: 2.5vw;
+    word-wrap: break-word;
   }
   .item-d {
     border: 1px solid purple;
@@ -123,7 +124,7 @@
 
   <div class="item-c">
     <div class="spaces">
-      <div class="row" id="spaces">
+      <div class="row" id="spaces" style="word-wrap: break-word; font-family: 'Lacquer', 'arial', 'sans-serif';">
         @foreach(char i in Model.FillInBlanks())
           {
             <div style="float: left;">
@@ -131,7 +132,7 @@
               {
                 <h1><pre>  </pre></h1>
               } else {
-                <h1><pre>@i </pre></h1>
+                <h1><pre style="font-family: 'Lacquer', 'arial', 'sans-serif';">@i </pre></h1>
               }
             </div>
           }
