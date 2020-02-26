@@ -2,15 +2,40 @@
 @{
   Layout = "_Layout";
 }
+<style>
+  .wrap {
+    border: solid 3px red;
+    height: 600px;
+    text-align: center;
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+  .disabled {
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 60%;
+  }
+</style>
+
 <div class="wrap">
-  <p>Pik a category or difficulty and the computer will create a word for you to guess</p>
-  @* <form action="/easy" method="get">
-    <button type="submit">Easy</button>
-  </form>
-  <form action="/medium" method="get">
-    <button type="submit">medium</button>
-  </form> *@
-  <form action="/hard" method="get">
-    <button type="submit">hard</button>
-  </form>
+  <h2>Pick a category and the computer will create a word for you to guess</h2>
+  <div class="btn">
+    <form action="/hard" method="get">
+      <button type="submit" class="btn btn-success" style="border:solid black 1px; margin: 20px; cursor: grab;">Normal</button>
+    </form>
+    <div class="disabled">
+      <form action="/chem" method="get">
+        <button type="submit" class="btn btn-warning" style="margin: 20px; cursor: not-allowed;">Chemistry</button>
+      </form>
+      <form action="/astronomy" method="get">
+        <button type="submit" class="btn btn-dark" style="margin: 20px; cursor: not-allowed;">Astronomy</button>
+      </form>
+      <form action="/movies" method="get">
+        <button type="submit" class="btn btn-primary" style="margin: 20px; cursor: not-allowed;">Movies</button>
+      </form>
+    </div>
+  </div>
 </div>
