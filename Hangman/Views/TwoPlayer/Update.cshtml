@@ -4,11 +4,12 @@
 }
 <style>
   .row {
+    display: flex;
     width: auto;
-    height: 20px;
+    height: 70px;
     padding: 15px;
-    margin: 20px;
-    background-color: grey;
+    margin: 10px;
+    
   }
   #spaces {
     width: 100%;
@@ -50,18 +51,21 @@
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: inline-block;
+    background-color: goldenrod;
   }
   .item-d {
     border: 1px solid purple;
+    <h2 style="margin-right:30px; font-family:'Trade Winds','arial';">Letter Bank:</h2>
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding: 26px;
     
   }
   .item-e {
-    border: 1px solid yellow;
+    border: 1px solid black;
     grid-column: 2 / 3;
     grid-row: 3 / 4;
+    background-color: cornflowerblue;
   }
 </style>
 
@@ -159,7 +163,9 @@
   
   <div class="item-e">
     <div class="row">
-      <h2 style="margin-right:30px;">Letter Bank:</h2>
+      <div class="border" style="width: 35%; background-color: coral;">
+        <h2 style="margin-right:0px; font-family:'Trade Winds','arial'; text-align: center;">Letter Bank:</h2>
+      </div>
       @foreach(string i in Model.LettersBank())
       {
         <h1>@i</h1><pre>  </pre>
