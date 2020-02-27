@@ -17,7 +17,7 @@
   .container {
     background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
     background-color: aqua;
-    border: 3px solid red;
+    border-radius: 15px;
     display: grid;
     grid-template-columns: [first] auto [meridian] auto [last];
     grid-template-rows: repeat(4, 25% [row-start]);
@@ -26,21 +26,18 @@
     padding: 10px;
   }
   .item-a {
-    border: 1px solid blue;
     grid-column-start: first;
     grid-column-end: meridian;
     grid-row-start: 1;
     grid-row-end: 4;
   }
   .item-b {
-    border: 1px solid orange;
     grid-column-start: 1;
     grid-column-end: meridian;
     grid-row-start: 4;
     grid-row-end: 4;
   }
   .item-c {
-    border: 1px solid green;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: inline-block;
@@ -49,14 +46,12 @@
     word-wrap: break-word;
   }
   .item-d {
-    border: 1px solid purple;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding: 26px;
     background-color: darkblue;
   }
   .item-e {
-    border: 1px solid black;
     grid-column: 2 / 3;
     grid-row: 3 / 4;
     background-color: goldenrod;

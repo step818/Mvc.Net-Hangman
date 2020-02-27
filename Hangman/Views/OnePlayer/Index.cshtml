@@ -15,7 +15,6 @@
   .disabled {
     display: flex;
     justify-content: center;
-    pointer-events: none;
     opacity: 60%;
   }
 </style>
@@ -28,13 +27,13 @@
     </form>
     <div class="disabled">
       <form action="/chem" method="get">
-        <button type="submit" class="btn btn-warning" style="margin: 20px; cursor: not-allowed;">Chemistry</button>
+        <button type="submit" class="btn btn-warning" style="margin: 20px; cursor: not-allowed;" disabled>Chemistry</button>
       </form>
       <form action="/astronomy" method="get">
-        <button type="submit" class="btn btn-dark" style="margin: 20px; cursor: not-allowed;">Astronomy</button>
+        <button type="submit" class="btn btn-dark" style="margin: 20px; cursor: not-allowed;" disabled>Astronomy</button>
       </form>
       <form action="/movies" method="get">
-        <button type="submit" class="btn btn-primary" style="margin: 20px; cursor: not-allowed;">Movies</button>
+        <button type="submit" class="btn btn-primary" style="margin: 20px; cursor: not-allowed;" disabled>Movies</button>
       </form>
     </div>
   </div>

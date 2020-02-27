@@ -4,62 +4,72 @@
 }
 <style>
   .row {
+    display: flex;
     width: auto;
-    height: 20px;
+    height: 70px;
     padding: 15px;
-    margin: 20px;
-    background-color: grey;
+    margin: 10px;
+    font-family: 'Lacquer', 'arial', 'sans-serif';
   }
   #spaces {
-    width: 100%;
     display: inline-block;
   }
-  .formGuess {
-    background-image: linear-gradient(greenyellow, darkgreen);
-    border: 1px solid black;
-    height: 3%;
-    width: 60%;
-    padding: 3%;
-    vertical-align: auto;
-  }
   .container {
-    border: 3px solid red;
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+    background-color: aqua;
+    border-radius: 15px;
     display: grid;
     grid-template-columns: [first] auto [meridian] auto [last];
-    grid-template-rows: repeat(3, 30% [row-start]);
+    grid-template-rows: repeat(4, 25% [row-start]);
+    width: 100%;
+    height: 20%;
     padding: 10px;
   }
   .item-a {
-    border: 1px solid blue;
     grid-column-start: first;
     grid-column-end: meridian;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 4;
   }
   .item-b {
-    border: 1px solid orange;
     grid-column-start: 1;
     grid-column-end: meridian;
-    grid-row-start: 3;
+    grid-row-start: 4;
     grid-row-end: 4;
   }
   .item-c {
-    border: 1px solid green;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: inline-block;
+    background-color: lightskyblue;
+    font-size: 2.5vw;
+    word-wrap: break-word;
   }
   .item-d {
-    border: 1px solid purple;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding: 26px;
+    background-color: darkblue;
     
   }
   .item-e {
-    border: 1px solid yellow;
     grid-column: 2 / 3;
     grid-row: 3 / 4;
+    background-color: goldenrod;
+  }
+  label {
+    background-image: linear-gradient( aquamarine, darkseagreen);
+    border: 1px solid black;
+    border-radius: 15px;
+    height: auto;
+    width: 50%;
+    padding: 3%;
+    text-align: center;
+  }
+  input {
+    -moz-box-shadow: inset -3px -3px 10px red;
+    -webkit-box-shadow: inset -3px -3px 10px blue;
+    box-shadow: inset -3px -3px 10px blue;
   }
 </style>
 
@@ -69,20 +79,8 @@
     <div class="noosePicture" style="margin-left: 20%;">
       @if(Model.Score == 0) {
         <div>
-          <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
+          <img src="~/img/Hangman0.png" width="200" height="600" alt="noose picture">
         </div>
-      } else if(Model.Score == 1) 
-      {
-        <p>Head</p>
-      } else if(Model.Score == 2)
-      {
-        <p>Head plus Torso</p>
-      } else if(Model.Score == 3)
-      {
-        <p>Head plus Torso plus Left Arm</p>
-      } else if(Model.Score == 4)
-      {
-        <p>Head plus Torso plus Left Arm plus Right Arm</p>
       }
     </div>
   </div>
@@ -94,8 +92,8 @@
   </div>
     
   <div class="item-c">
-    <div class="row">
-      <div class="spaces">
+    <div class="spaces">
+      <div class="row" id="spaces" style="word-wrap: break-word; font-family: 'Lacquer', 'arial', 'sans-serif';">
           @foreach(char i in Model.FillInBlanks())
           {
             <div style="float: left;">
@@ -103,7 +101,7 @@
               {
                 <h1><pre>  </pre></h1>
               } else{
-                <h1><pre>@i </pre></h1>
+                <h1><pre style="font-family: 'Lacquer', 'arial', 'sans-serif';">@i </pre></h1>
               }
             </div>
           }
@@ -115,21 +113,24 @@
   <div class="item-d">
     @if(Model.Score < 6 && !Model.Win())
     {
-      <div class="formGuess">
-        <form action="/hangman/{letter}" method="post">
-          <label for="letter"><strong>Type a letter here for your guess</strong></label>
-          <input id="letter" name="letter" type="text">
-          <button type="submit">Submit guess</button>
-        </form>
-      </div>
+      <form action="/hangman/{letter}" method="post">
+        <label for="letter"><strong>Type a letter here for your guess</strong></label>
+        <input id="letter" name="letter" type="text" required style="border-radius: 15px;">
+        <button type="submit" style="border-radius: 15px; font-style: italic;background-color: #f7b31c;">Submit</button>
+      </form>
     }
   </div>
 
   <div class="item-e">
-    <h2 style="margin-right: 30px;">Letter Bank:</h2>
-    @foreach(string i in Model.LettersBank())
-    {
-      <p>@i</p>
-    }
+    <div class="row">
+      <div class="letter-bank" style="margin-right: 3%; width: 35%; background-color: darkgoldenrod; border-radius: 20px; padding-top: 7px;">
+        <h2 style="font-family:'Trade Winds','arial'; text-align: center;">Letter Bank:</h2>
+      </div> 
+      @foreach(string i in Model.LettersBank())
+      {
+        <p>@i</p>
+      }
+    </div>
   </div>
+
 </div>

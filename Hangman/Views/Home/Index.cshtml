@@ -1,12 +1,27 @@
 @{
   Layout = "_Layout";
 }
+<style>
+  .btn {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  .jumbotron {
+    text-align: center;
+    font-family: 'Trade Winds', 'Arial', 'Helvetica', 'sans-serif';
+    color: paleturquoise;
+    background-color: midnightblue;
+  }
+</style>
 <div class="container">
   <div class="jumbotron">Hangman</div>
-  <form action="/one" method="get">
-    <button type="submit" class="btn btn-primary">Against Computer</button>
-  </form>
-  <form action="/two" method="get">
-    <button type="submit" class="btn btn-danger">Against Each Other</button>
-  </form>
+  <div class="btn">
+    <form action="/one" method="get">
+      <button type="submit" class="btn btn-primary btn-lg">Against Computer</button>
+    </form>
+    <form action="/two" method="get">
+      <button type="submit" class="btn btn-danger btn-lg">Against Each Other</button>
+    </form>
+  </div>
 </div>

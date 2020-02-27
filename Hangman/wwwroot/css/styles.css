@@ -1,8 +1,8 @@
 
 .jumbotron {
-  color: red;
+  color: paleturquoise;
   font-size: 100px;
-  background-color: teal;
+  background-color:midnightblue;
 }
 body {
   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
