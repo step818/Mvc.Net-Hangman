@@ -15,6 +15,8 @@
     display: inline-block;
   }
   .container {
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+    background-color: aqua;
     border: 3px solid red;
     display: grid;
     grid-template-columns: [first] auto [meridian] auto [last];
@@ -42,7 +44,7 @@
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: inline-block;
-    background-color: goldenrod;
+    background-color: lightskyblue;
     font-size: 2.5vw;
     word-wrap: break-word;
   }
@@ -57,7 +59,7 @@
     border: 1px solid black;
     grid-column: 2 / 3;
     grid-row: 3 / 4;
-    background-color: cornflowerblue;
+    background-color: goldenrod;
   }
   label {
     background-image: linear-gradient( aquamarine, darkseagreen);
@@ -167,8 +169,8 @@
   
   <div class="item-e">
     <div class="row">
-      <div class="border" style="width: 35%; background-color: coral;">
-        <h2 style="margin-right:0px; font-family:'Trade Winds','arial'; text-align: center;">Letter Bank:</h2>
+      <div class="letter-bank" style="margin-right: 3%; width: 35%; background-color: darkgoldenrod; border-radius: 20px; padding-top: 7px;">
+        <h2 style="font-family:'Trade Winds','arial'; text-align: center;">Letter Bank:</h2>
       </div>
       @foreach(string i in Model.LettersBank())
       {
