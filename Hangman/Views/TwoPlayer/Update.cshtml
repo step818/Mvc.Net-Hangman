@@ -36,25 +36,32 @@
     grid-column-end: meridian;
     grid-row-start: 4;
     grid-row-end: 4;
+    border: black solid 20px;
+    background-color: brown;
   }
   .item-c {
     grid-column: 2 / 3;
+    text-align: center;
     grid-row: 1 / 2;
     display: inline-block;
     background-color: lightskyblue;
+    border-radius: 50px;
     font-size: 2.5vw;
     word-wrap: break-word;
   }
   .item-d {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    grid-column-start: meridian;
+    grid-column-end: meridian;
+    grid-row: 2 / 4;
     padding: 26px;
-    background-color: darkblue;
   }
   .item-e {
     grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-row-start: 4;
+    grid-row-end: 4;
     background-color: goldenrod;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 45%;
   }
   label {
     background-image: linear-gradient( aquamarine, darkseagreen);
@@ -141,7 +148,7 @@
     @if(Model.Score < 6 && !Model.Win())
     {
     <form action="/hangman/{letter}" method="post">
-      <label for="letter"><strong>Type a letter here for your guess</strong></label>
+      <label for="letter"><strong>Type a letter</strong></label>
       <input id="letter" name="letter" type="text" required style="border-radius: 15px;">
       <button type="submit" style="border-radius: 15px; font-style: italic;background-color: #f7b31c;">Submit</button>
     </form>
@@ -169,7 +176,7 @@
       </div>
       @foreach(string i in Model.LettersBank())
       {
-        <h1>@i</h1><pre>  </pre>
+        <h1 style="border: 1px solid black; border-radius: 50%; background-color: yellow;">@i</h1><pre>  </pre>
       }
     </div>
   </div>
