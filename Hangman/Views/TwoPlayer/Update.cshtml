@@ -87,12 +87,16 @@
     width: 100%;
     height: 75px;
   }
+  h1 {
+    
+  }
   .coin {
-    height: 90%;
-    width: 35px;
-    border: 1px solid black; 
-    border-radius: 50%; 
+    border: 1px solid black;
+    border-radius: 50%;
     background-color: yellow;
+    width: 35px;
+    height: 35px;
+    text-align: center;
   }
 </style>
 
@@ -194,7 +198,7 @@
       </div>
       @foreach(string i in Model.LettersBank())
       {
-        <div class="coin"><h1>@i</h1></div><pre>  </pre>
+        <h1 class="coin">@i</h1><pre>  </pre>
         
       }
     </div>

@@ -4,19 +4,26 @@
 }
 <style>
   .wrap {
-    display: block;
     overflow: auto;
+    margin: 15%;
+    background-color: blanchedalmond;
+    box-shadow: black;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    animation: brighten 4s infinite;
+    opacity: 0.9;
+  }
+  input {
+
   }
 </style>
 <div class="wrap">
-    <p>Player creating the string, type your string in the form below.</p>
     <form action="/hangman" method="post">
-      <label for="word">Dont let the other player see</label>
+      <label for="word">Using only letters, type your word or phrase in the form below. Dont let the other player see</label>
       <input id="word" name="word" type="text">
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-success">Submit</button>
     </form>
-    <div class="backGround">
-      <img src="~/img/HangmanCover.png" width="60%" height="35%">
-    </div>
 </div>
 
