@@ -5,7 +5,7 @@
 <style>
   .wrap {
     overflow: auto;
-    margin: 15%;
+    margin: 10%;
     background-color: blanchedalmond;
     box-shadow: black;
     align-items: center;
@@ -14,14 +14,56 @@
     height: 50vh;
     animation: brighten 4s infinite;
     opacity: 0.9;
+    font-family: 'Tangerine', cursive;
+    font-weight: bold;
+    font-size: 350%;
   }
-  input {
+  .btn {
+  display: inline-block;
+  position: relative;
+  background-color: #AAA;
+  background-image: linear-gradient( /* chrome */
+    hsla(0, 0%, 100%, 0.6), hsla(0, 0%, 100%, 0) 50%,
+    hsla(0, 0%, 0%, 0.3) 50%, hsla(0, 0%, 100%, 0.2)
+  );
+  font-size: 22px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  padding: 20px 40px;
+  text-shadow:
+    0 0 15px hsla(0, 0%, 100%, 1), /* bloom */
+    0 2px 4px hsla(0, 0%, 0%, 0.7); /* drop shadow */
+  border: none;
+  border-radius: 50px;
+  margin: 10px;
+  box-shadow:
+    inset 0 -5px 20px hsla(0, 0%, 0%, 0.4), /* top light */
+    inset 0 5px 20px hsla(0, 0%, 100%, 0.4), /* bottom shadow */
+    /* multiple light sources yall */
+    -8px 8px 5px hsla(0, 0%, 0%, 0.15), /* drop shadow 1 */
+    5px 18px 10px hsla(0, 0%, 0%, 0.2); /* drop shadow 2 */
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
 
-  }
+/* highlight */
+.btn:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 5px;
+  height: 30px;
+  border-radius: 15px;
+  background: linear-gradient(
+    hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0) );
+}
 </style>
 <div class="wrap">
     <form action="/hangman" method="post">
-      <label for="word">Using only letters, type your word or phrase in the form below. Dont let the other player see</label>
+      <label for="word">Dont let the other player see your word. Type here</label>
       <input id="word" name="word" type="text">
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
