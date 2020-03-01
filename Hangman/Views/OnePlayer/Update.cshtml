@@ -15,11 +15,9 @@
     display: inline-block;
   }
   .formGuess {
-    background-image: linear-gradient(greenyellow, darkgreen);
     border: 1px solid black;
     height: 3%;
-    width: 60%;
-    padding: 3%;
+    padding: 1%;
     vertical-align: auto;
   }
   .container {
@@ -133,7 +131,7 @@
     {
     <div class="formGuess">
       <form action="/hard/{letter}" method="post">
-        <label for="letter"><strong>Type a letter here for your guess</strong></label>
+        <label for="letter"><strong>Guess a letter here</strong></label>
         <input id="letter" name="letter" type="text" required>
         <button type="submit">Submit</button>
       </form>
