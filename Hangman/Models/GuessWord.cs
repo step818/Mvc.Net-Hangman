@@ -13,7 +13,8 @@ namespace Hangman.Models
     public static List<MysteryWord> _words = new List<MysteryWord>{};
     public static List<MysteryWord> _hard = new List<MysteryWord>{};
     public static int randomId { get; set; }
-    public static int counter { get; set; }
+    public static List<int> _ids = new List<int>{};
+    public static int counter = 0;
     public MysteryWord(string word)
     {
       Score = 0;
@@ -50,6 +51,15 @@ namespace Hangman.Models
         } 
       }
       return true;
+    }
+    public static bool isRecent(int id)
+    {
+      if(_ids.Contains(id))
+      {
+        return true;
+      } else {
+        return false;
+      }
     }
     public static int RandomId()
     {
@@ -117,6 +127,11 @@ namespace Hangman.Models
 
       // Get random id
       int id = RandomId();
+      if(isRecent(id)) {
+        System.Threading.Thread.Sleep(2000);
+        Generate();
+      }
+      _ids.Add(id);
       return _words[id];
     }
     public List<string> LettersBank()

@@ -10,12 +10,14 @@ namespace Hangman.Controllers
     [HttpGet("/one")]
     public ActionResult Index()
     {
+      MysteryWord.counter++;
       if(MysteryWord.counter > 4) {
         MysteryWord.ClearAllWords();
         MysteryWord.ClearAllHardWords();
       }
       MysteryWord.ClearAllLetters();
-    
+      MysteryWord.ClearAllWords();
+      MysteryWord.ClearAllHardWords();
       return View();
     }
 
