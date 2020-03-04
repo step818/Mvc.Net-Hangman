@@ -3,17 +3,6 @@
   Layout = "_Layout";
 }
 <style>
-  .row {
-    display: flex;
-    width: auto;
-    height: 70px;
-    padding: 15px;
-    margin: 10px;
-    font-family: 'Lacquer', 'arial', 'sans-serif';
-  }
-  #spaces {
-    display: inline-block;
-  }
   .container {
     background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
     background-color: aqua;
@@ -38,9 +27,8 @@
     grid-row-end: 4;
   }
   .item-c {
-    margin-top: 20px;
-    margin-right: 20px;
-    padding-top: 20px;
+    margin: 20px;
+    padding: 15px;
     grid-column: 2 / 3;
     text-align: center;
     grid-row: 1 / 2;
@@ -48,7 +36,6 @@
     background-color: azure;
     border-radius: 50px;
     font-size: 2.5vw;
-    word-wrap: break-word;
   }
   .item-d {
     grid-column-start: meridian;
@@ -97,9 +84,6 @@
     background-color: mediumblue;
     width: 100%;
     height: 75px;
-  }
-  h1 {
-    
   }
   .coin {
     border: 1px solid black;
@@ -166,21 +150,17 @@
   </div>
 
   <div class="item-c">
-    <div class="spaces">
-      <div class="row" id="spaces" style="word-wrap: break-word; font-family: 'Lacquer', 'arial', 'sans-serif';">
-        @foreach(char i in Model.FillInBlanks())
+    @foreach(char i in Model.FillInBlanks())
+      {
+        <div style="white-space: nowrap; float: left;">
+          @if(i == ' ')
           {
-            <div style="float: left;">
-              @if(i == ' ')
-              {
-                <h1><pre>  </pre></h1>
-              } else {
-                <h1><pre style="font-family: 'Lacquer', 'arial', 'sans-serif';">@i </pre></h1>
-              }
-            </div>
+            <h1><pre>  </pre></h1>
+          } else {
+            <h1><pre style="white-space: nowrap; position: relative; font-family: 'Lacquer', 'arial', 'sans-serif';">@i </pre></h1>
           }
-      </div>
-    </div>
+        </div>
+      }
   </div>
   
   <div class="item-d">
