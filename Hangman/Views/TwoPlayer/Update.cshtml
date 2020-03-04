@@ -65,17 +65,26 @@
     border-top-right-radius: 45%;
   }
   label {
-    background-color: brown;
-    color: white;
+    font-family:'Trade Winds','arial';
+    background-color: saddlebrown;
+    color: seashell;
     padding: 5px;
-    border-radius: 30px;
+    border-radius: 5px;
     height: auto;
     text-align: center;
+    text-shadow: 2px 2px black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
   }
   input {
-    -moz-box-shadow: inset -3px -3px 10px red;
-    -webkit-box-shadow: inset -3px -3px 10px blue;
-    box-shadow: inset -3px -3px 10px blue;
+    box-shadow: 0px 2px 20px 5px moccasin;
+    width: 50px;
+    border: 3px solid sienna;
+    background-color: black;
+    color: seashell;
+    font-family: 'Trade Winds', 'arial';
+    font-size: 27px;
+    padding-left: 20px;
   }
   .deck {
     background-color: maroon;
@@ -178,7 +187,7 @@
     @if(Model.Score < 6 && !Model.Win())
     {
     <form action="/hangman/{letter}" method="post">
-      <label for="letter"><strong>Type a letter</strong></label>
+      <label for="letter"><strong>Guess here-></strong></label>
       <input id="letter" name="letter" type="text" required style="border-radius: 15px;">
       <button type="submit" style="border-radius: 15px; font-style: italic;background-color: #f7b31c;">Submit</button>
     </form>

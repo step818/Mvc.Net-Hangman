@@ -20,7 +20,7 @@ namespace Hangman.Models
       Id = _words.Count;
       Word = word;
       _words.Add(this);
-      charArr = new char[Word.Length];
+      charArr = new char[word.Length];
     }
     public static void ClearAllWords()
     {
