@@ -87,7 +87,7 @@ namespace Hangman.Tests
     {
       int number = MysteryWord.RandomId();
       int testi;
-      if(number > 0 || number < 6){
+      if(number > 0 || number < 25){
         testi = number;
       } else {
         testi = -1;
