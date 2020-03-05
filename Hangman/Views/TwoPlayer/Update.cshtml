@@ -107,39 +107,39 @@
     <form action="/" method="get">
       <button type="submit" class="btn btn-warning">Main menu</button>
     </form>
-    <div class="noosePicture" style="margin-left: 20%;">
+    <div class="noosePicture" style="margin-bottom:100px; margin-top: 10px;">
       @if(Model.Score == 0) {
         <div>
-          <img src="~/img/Hangman0.png" width="300" height="600" alt="noose picture">
+          <img src="~/img/Hangman0.png" width="350" height="450" alt="noose picture">
         </div>
       } else if (Model.Score == 1) {
         <div>
-          <img src="~/img/Hangman1.png" width="200" height="500" alt="1 wrong, noose picture">
+          <img src="~/img/Hangman1.png" width="350" height="450" alt="1 wrong, noose picture">
         </div>
       } else if(Model.Score == 2)
       {
         <div>
-          <img src="~/img/Hangman2.png" width="200" height="500" alt="1 wrong, noose picture">
+          <img src="~/img/Hangman2.png" width="350" height="450" alt="1 wrong, noose picture">
         </div>
       } else if(Model.Score == 3)
       {
         <div>
-          <img src="~/img/Hangman3.png" width="200" height="500" alt="1 wrong, noose picture">
+          <img src="~/img/Hangman3.png" width="350" height="450" alt="1 wrong, noose picture">
         </div>
       } else if(Model.Score == 4)
       {
         <div>
-          <img src="~/img/Hangman4.png" width="200" height="600" alt="1 wrong, noose picture">
+          <img src="~/img/Hangman4.png" width="350" height="450" alt="1 wrong, noose picture">
         </div>
       } else if(Model.Score == 5)
       {
         <div>
-          <img src="~/img/Hangman5.png" width="200" height="600" alt="1 wrong, noose picture">
+          <img src="~/img/Hangman5.png" width="350" height="450" alt="1 wrong, noose picture">
         </div>
       } else if(Model.Score == 6)
       {
         <div>
-          <img src="~/img/Hangman6.png" width="200" height="600" alt="1 wrong, noose picture">
+          <img src="~/img/Hangman6.png" width="350" height="450" alt="1 wrong, noose picture">
         </div>
       }
     </div>
@@ -150,17 +150,19 @@
   </div>
 
   <div class="item-c">
-    @foreach(char i in Model.FillInBlanks())
+    <div style="word-wrap: break-word; font-family: 'Lacquer', 'arial', 'sans-serif';">
+      @foreach(char i in Model.FillInBlanks())
       {
-        <div style="white-space: nowrap; float: left;">
+        <div style="float: left;">
           @if(i == ' ')
           {
             <h1><pre>  </pre></h1>
           } else {
-            <h1><pre style="white-space: nowrap; position: relative; font-family: 'Lacquer', 'arial', 'sans-serif';">@i </pre></h1>
+            <h1><pre style="font-family: 'Lacquer', 'arial', 'sans-serif';">@i </pre></h1>
           }
         </div>
       }
+    </div>
   </div>
   
   <div class="item-d">

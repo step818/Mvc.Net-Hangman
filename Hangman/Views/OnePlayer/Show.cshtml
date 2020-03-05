@@ -3,70 +3,108 @@
   Layout = "_Layout";
 }
 <style>
-  .row {
-    width: auto;
-    height: 20px;
-    padding: 15px;
-    margin: 20px;
-    background-color: grey;
-  }
-  #spaces {
-    width: 100%;
-    display: inline-block;
-  }
-  .formGuess {
-    background-image: linear-gradient(greenyellow, darkgreen);
-    border: 1px solid black;
-    height: 3%;
-    width: 60%;
-    padding: 3%;
-    vertical-align: auto;
-  }
   .container {
-    border: 3px solid red;
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+    background-color: aqua;
+    border-radius: 15px;
     display: grid;
     grid-template-columns: [first] auto [meridian] auto [last];
-    grid-template-rows: repeat(3, 30% [row-start]);
+    grid-template-rows: repeat(4, 25% [row-start]);
+    width: 100%;
+    height: 20%;
     padding: 10px;
   }
   .item-a {
-    border: 1px solid blue;
     grid-column-start: first;
     grid-column-end: meridian;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 4;
   }
   .item-b {
-    border: 1px solid orange;
     grid-column-start: 1;
     grid-column-end: meridian;
-    grid-row-start: 3;
+    grid-row-start: 4;
     grid-row-end: 4;
   }
   .item-c {
-    border: 1px solid green;
+    margin: 20px;
+    padding: 15px;
     grid-column: 2 / 3;
+    text-align: center;
     grid-row: 1 / 2;
     display: inline-block;
+    background-color: azure;
+    border-radius: 50px;
+    font-size: 2.5vw;
   }
   .item-d {
-    border: 1px solid purple;
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    grid-column-start: meridian;
+    grid-column-end: meridian;
+    grid-row: 3 / 4;
     padding: 26px;
-    
   }
   .item-e {
-    border: 1px solid yellow;
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-column: 1 / 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    background-color: goldenrod;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 45%;
+  }
+  label {
+    font-family:'Trade Winds','arial';
+    background-color: saddlebrown;
+    color: seashell;
+    padding: 5px;
+    border-radius: 5px;
+    height: auto;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  input {
+    box-shadow: 0px 2px 20px 5px moccasin;
+    width: 50px;
+    border: 3px solid sienna;
+    background-color: black;
+    color: seashell;
+    font-family: 'Trade Winds', 'arial';
+    font-size: 27px;
+    padding-left: 20px;
+  }
+  .deck {
+    background-color: maroon;
+    height: 150px;
+    width: 80%;
+    border: solid black 1px;
+    border-radius: 5px;
+  }
+  .ocean {
+    background-color: mediumblue;
+    width: 100%;
+    height: 75px;
+  }
+  .coin {
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: yellow;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+  }
+  #torso {
+    border: purple 10px solid;
+    width: 1%;
+    height: 150px;
+    position: absolute;
   }
 </style>
 
 <div class="container">
 
   <div class="item-a">
-    <div class="noosePicture" style="margin-left: 20%;">
+    <div class="noosePicture" style="margin-left: 10%;">
       @if(Model.Score == 0) {
         <div>
           <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
