@@ -10,6 +10,7 @@ namespace Hangman.Controllers
     [HttpGet("/one")]
     public ActionResult Index()
     {
+      Console.WriteLine(MysteryWord.counter);
       // For 6 words in a row, don't repeat any words
       if(MysteryWord.counter > 5) {
         MysteryWord.ClearAllIds();
@@ -28,7 +29,6 @@ namespace Hangman.Controllers
       Console.WriteLine(newWord.Word);
       Console.WriteLine(MysteryWord.randomId);
       MysteryWord.counter++;
-      Console.WriteLine(MysteryWord.counter);
       return View(newWord);
     }
     [HttpPost("/hard/{letter}")]

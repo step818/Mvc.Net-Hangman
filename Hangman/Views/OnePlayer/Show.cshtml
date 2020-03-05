@@ -19,6 +19,7 @@
     grid-column-end: meridian;
     grid-row-start: 1;
     grid-row-end: 4;
+    z-index: 100;
   }
   .item-b {
     grid-column-start: 1;
@@ -72,6 +73,7 @@
     font-family: 'Trade Winds', 'arial';
     font-size: 27px;
     padding-left: 20px;
+    border-radius: 15px;
   }
   .deck {
     background-color: maroon;
@@ -104,7 +106,10 @@
 <div class="container">
 
   <div class="item-a">
-    <div class="noosePicture" style="margin-left: 10%;">
+    <form action="/" method="get">
+      <button type="submit" class="btn btn-warning">Main menu</button>
+    </form>
+    <div class="noosePicture" style="margin-left: 20%;">
       @if(Model.Score == 0) {
         <div>
           <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
@@ -126,9 +131,7 @@
   </div>
 
   <div class="item-b">
-    <form action="/" method="get">
-      <button type="submit" class="btn btn-success">Main menu</button>
-    </form>
+
   </div>
     
   <div class="item-c">
@@ -155,7 +158,7 @@
     {
       <div class="formGuess">
         <form action="/hard/{letter}" method="post">
-          <label for="letter"><strong>Type a letter here for your guess</strong></label>
+          <label for="letter"><strong>Guess here -></strong></label>
           <input id="letter" name="letter" type="text" required>
           <button type="submit">Submit</button>
         </form>
@@ -164,7 +167,7 @@
   </div>
 
   <div class="item-e">
-    <h2 style="margin-right: 30px;">Letter Bank:</h2>
+    <h2 style="margin-right: 30px; z-index: 200;">Letter Bank:</h2>
     @foreach(string i in Model.LettersBank())
     {
       <p>@i</p>

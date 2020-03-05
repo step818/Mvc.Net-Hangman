@@ -73,6 +73,7 @@
     font-family: 'Trade Winds', 'arial';
     font-size: 27px;
     padding-left: 20px;
+    border-radius: 15px;
   }
   .deck {
     background-color: maroon;
@@ -111,7 +112,7 @@
     <div class="noosePicture" style="margin-bottom:0px; margin-top: -30px; margin-left: 10%;">
       @if(Model.Score == 0) {
         <div>
-          <img src="~/img/Hangman0.png" width="200" height="390" alt="noose picture">
+          <img src="~/img/Hangman0.png" width="250" height="390" alt="noose picture">
         </div>
       }
     </div>
@@ -139,7 +140,7 @@
     {
       <form action="/hangman/{letter}" method="post">
         <label for="letter"><strong>Guess here -></strong></label>
-        <input id="letter" name="letter" type="text" required style="border-radius: 15px;">
+        <input id="letter" name="letter" type="text" required >
         <button type="submit" style="border-radius: 15px; font-style: italic;background-color: #f7b31c;">Submit</button>
       </form>
     }
