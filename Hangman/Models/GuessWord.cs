@@ -31,6 +31,10 @@ namespace Hangman.Models
     {
       _hard.Clear();
     }
+    public static void ClearAllIds()
+    {
+      _ids.Clear();
+    }
     public static void ClearAllLetters()
     {
       _letters.Clear();
@@ -51,15 +55,6 @@ namespace Hangman.Models
         } 
       }
       return true;
-    }
-    public static bool isRecent(int id)
-    {
-      if(_ids.Contains(id))
-      {
-        return true;
-      } else {
-        return false;
-      }
     }
     public static int RandomId()
     {
@@ -127,9 +122,10 @@ namespace Hangman.Models
 
       // Get random id
       int id = RandomId();
-      if(isRecent(id)) {
-        System.Threading.Thread.Sleep(2000);
-        Generate();
+      while (_ids.Contains(id))
+      {
+        System.Threading.Thread.Sleep(1000);
+        id = RandomId();
       }
       _ids.Add(id);
       return _words[id];

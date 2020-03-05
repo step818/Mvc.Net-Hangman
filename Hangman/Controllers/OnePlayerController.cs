@@ -10,10 +10,10 @@ namespace Hangman.Controllers
     [HttpGet("/one")]
     public ActionResult Index()
     {
-      MysteryWord.counter++;
-      if(MysteryWord.counter > 4) {
-        MysteryWord.ClearAllWords();
-        MysteryWord.ClearAllHardWords();
+      // For 6 words in a row, don't repeat any words
+      if(MysteryWord.counter > 5) {
+        MysteryWord.ClearAllIds();
+        Console.WriteLine("cleared al ids");
       }
       MysteryWord.ClearAllLetters();
       MysteryWord.ClearAllWords();
@@ -27,6 +27,8 @@ namespace Hangman.Controllers
       MysteryWord newWord = MysteryWord.Generate();
       Console.WriteLine(newWord.Word);
       Console.WriteLine(MysteryWord.randomId);
+      MysteryWord.counter++;
+      Console.WriteLine(MysteryWord.counter);
       return View(newWord);
     }
     [HttpPost("/hard/{letter}")]
@@ -43,7 +45,6 @@ namespace Hangman.Controllers
         if(isMatch)
         {
           bool win = playerWord.Win();
-          // For all blanks that are that letter, fill them in
         } else {
           playerWord.Score++;
         }
