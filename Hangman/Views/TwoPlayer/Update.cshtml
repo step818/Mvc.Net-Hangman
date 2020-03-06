@@ -57,6 +57,18 @@
     font-family: 'Trade Winds', 'arial', 'sans-serif';
     background-color: #f7b31c;
   }
+  #main-menu {
+    font-family:'Trade Winds','arial';
+    background-color: saddlebrown;
+    color: seashell;
+    padding: 5px;
+    border-radius: 5px;
+    height: auto;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+  }
   label {
     font-family:'Trade Winds','arial';
     background-color: saddlebrown;
@@ -93,12 +105,13 @@
     height: 75px;
   }
   .coin {
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 50%;
-    background-color: yellow;
+    background-color: gold;
     width: 35px;
     height: 35px;
     text-align: center;
+    box-shadow: 2px 2px brown;
   }
   #torso {
     border: purple 10px solid;
@@ -112,7 +125,7 @@
 
   <div class="item-a">
     <form action="/" method="get">
-      <button type="submit" class="btn btn-warning">Main menu</button>
+      <button type="submit" id="main-menu" class="btn btn-warning">Main menu</button>
     </form>
     <div class="noosePicture" style="margin-bottom:0px; margin-top: -30px; margin-left: 10%;">
       @if(Model.Score == 0) {
@@ -199,12 +212,10 @@
 
   <div class="item-e">
     <div class="row">
-      <div class="letter-bank" style="margin-right: 3%; width: 25%; padding-top: 7px;">
-        
-      </div>
+      <h2 style="margin-right:450px;"></h2>
       @foreach(string i in Model.LettersBank())
       {
-        <h1 class="coin">@i</h1><pre>  </pre>
+        <h1 class="coinOption">@i</h1><pre>  </pre>
         
       }
     </div>

@@ -99,6 +99,7 @@
     width: 35px;
     height: 35px;
     text-align: center;
+    box-shadow: 3px 3px orange;
   }
   #torso {
     border: purple 10px solid;
@@ -155,15 +156,13 @@
   </div>
 
   <div class="item-e">
-    <div class="row">
-      <div class="letter-bank" style="margin-right: 3%; width: 25%; padding-top: 7px;">
-          
+      <div class="row">
+        <h2 style="margin-right:450px;"></h2>
+        @foreach(string i in Model.LettersBank())
+        {
+          <h1 class="coin">@i</h1><pre>  </pre>
+        }
       </div>
-      @foreach(string i in Model.LettersBank())
-      {
-        <h1 class="coin">@i</h1><pre>  </pre>
-      }
-    </div>
   </div>
 
 </div>
