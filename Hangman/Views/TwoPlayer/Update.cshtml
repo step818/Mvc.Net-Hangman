@@ -19,6 +19,7 @@
     grid-column-end: meridian;
     grid-row-start: 1;
     grid-row-end: 4;
+    z-index: 100;
   }
   .item-b {
     grid-column-start: 1;
@@ -50,6 +51,11 @@
     background-color: goldenrod;
     border-top-left-radius: 45%;
     border-top-right-radius: 45%;
+  }
+  #submit {
+    border-radius: 10px; 
+    font-family: 'Trade Winds', 'arial', 'sans-serif';
+    background-color: #f7b31c;
   }
   label {
     font-family:'Trade Winds','arial';
@@ -108,7 +114,7 @@
     <form action="/" method="get">
       <button type="submit" class="btn btn-warning">Main menu</button>
     </form>
-    <div class="noosePicture" style="margin-bottom:100px; margin-top: 10px;">
+    <div class="noosePicture" style="margin-bottom:0px; margin-top: -30px; margin-left: 10%;">
       @if(Model.Score == 0) {
         <div>
           <img src="~/img/Hangman0.png" width="350" height="450" alt="noose picture">
@@ -170,9 +176,9 @@
     @if(Model.Score < 6 && !Model.Win())
     {
     <form action="/hangman/{letter}" method="post">
-      <label for="letter"><strong>Guess here-></strong></label>
+      <label for="letter"><strong>Guess here -></strong></label>
       <input id="letter" name="letter" type="text" required>
-      <button type="submit" style="border-radius: 15px; font-style: italic;background-color: #f7b31c;">Submit</button>
+      <button id="submit" type="submit">Submit</button>
     </form>
     } 
       else if(Model.Score == 6) 
@@ -193,8 +199,8 @@
 
   <div class="item-e">
     <div class="row">
-      <div class="letter-bank" style="margin-right: 3%; width: 25%; background-color: darkgoldenrod; border-radius: 20px; padding-top: 7px;">
-        <h2 style="font-family:'Trade Winds','arial'; text-align: center;">Letter Bank:</h2>
+      <div class="letter-bank" style="margin-right: 3%; width: 25%; padding-top: 7px;">
+        
       </div>
       @foreach(string i in Model.LettersBank())
       {

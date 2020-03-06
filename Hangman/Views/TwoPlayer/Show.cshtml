@@ -52,6 +52,11 @@
     border-top-left-radius: 45%;
     border-top-right-radius: 45%;
   }
+  #submit {
+    border-radius: 10px;
+    font-family: 'Trade Winds', 'arial', 'sans-serif';
+    background-color: #f7b31c;
+  }
   label {
     font-family:'Trade Winds','arial';
     background-color: saddlebrown;
@@ -112,9 +117,12 @@
     <div class="noosePicture" style="margin-bottom:0px; margin-top: -30px; margin-left: 10%;">
       @if(Model.Score == 0) {
         <div>
-          <img src="~/img/Hangman0.png" width="250" height="390" alt="noose picture">
+          <img src="~/img/Hangman0.png" width="350" height="450" alt="noose picture">
         </div>
       }
+    </div>
+    <div>
+      
     </div>
   </div>
     
@@ -141,19 +149,21 @@
       <form action="/hangman/{letter}" method="post">
         <label for="letter"><strong>Guess here -></strong></label>
         <input id="letter" name="letter" type="text" required >
-        <button type="submit" style="border-radius: 15px; font-style: italic;background-color: #f7b31c;">Submit</button>
+        <button id="submit" type="submit">Submit</button>
       </form>
     }
   </div>
 
   <div class="item-e">
-    <div style="margin-right: 30px;">
-      <h2 style="font-family:'Trade Winds','arial'; text-align: center;">Letter Bank:</h2>
-    </div> 
-    @foreach(string i in Model.LettersBank())
-    {
-      <p>@i</p>
-    }
+    <div class="row">
+      <div class="letter-bank" style="margin-right: 3%; width: 25%; padding-top: 7px;">
+          
+      </div>
+      @foreach(string i in Model.LettersBank())
+      {
+        <h1 class="coin">@i</h1><pre>  </pre>
+      }
+    </div>
   </div>
 
 </div>
